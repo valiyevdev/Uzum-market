@@ -1,0 +1,9 @@
+<form action="{% url 'set_language' %}">
+    {% csrf_token %}
+    <select name="language">
+        <option value="uz">O'zbek</option>
+        <option value="ru">Russian</option>
+        <option value="en">English</option>
+    </select>
+    <button type="submit">Tilni o'zgartrish</button>
+</form>

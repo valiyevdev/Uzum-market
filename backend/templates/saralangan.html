@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="w-full min-h-[500px] p-[20px] mb-[50px]">
+    <div class="w-full h-[1px] bg-[#D7D7D9] mb-5"></div>
+
+    <div class="w-full flex justify-between items-center mb-4">
+        <h2 class="text-[26px] font-semibold">Istaklarim</h2>
+    </div>
+
+    <div id="wishlist-container" class="container_large w-[1141px] flex flex-wrap gap-5"></div>
+
+    <div id="wishlist-empty" class="hidden w-full flex flex-col items-center justify-center text-center mt-[50px]">
+        <img class="w-[128px] h-[128px] mx-auto" src="https://uzum.uz/static/img/hearts.cf414be.png" alt="">
+        <h1 class="text-[22px] font-semibold mt-[24px]">Sizga yoqqanini qoʻshing</h1>
+        <p class="text-[12.8px] mt-[13px]">Mahsulotdagi ♡ belgisini bosing. Akkauntga kiring va barcha saralanganlar saqlanib qoladi</p>
+        <a href="{% url 'login' %}"
+           class="inline-block w-[139px] h-[38px] bg-[#7000FF] text-white rounded-[4px] mt-[24px] hover:bg-[#7F4DFF] text-[14px] flex justify-center items-center">Akkauntga kirish</a>
+    </div>
+
+    <div class="popular-products mt-[80px]">
+        <div class="flex justify-between items-center ml-[50px] mb-4">
+            <h2 class="text-[28px] font-semibold">Ommabop mahsulotlar</h2>
+        </div>
+        <div class="container_large w-[1141px] flex flex-wrap gap-5">
+            {% for narsalar in narsalar %}
+            <div class="w-[232px] h-[522px] hover:shadow-xl ease-linear duration-500 p-[4px]">
+                <div class="relative rounded-t-xl overflow-hidden h-[522px] bg-white">
+                    <img src="{{ narsalar.img.url }}" class="h-[313px] object-cover rounded-xl transform transition-transform hover:scale-105 duration-500" alt="" width="230" height="309">
+                    <span class="add-to-wishlist w-[24px] h-[24px] bg-white absolute top-[5px] right-[5px] flex justify-center items-center rounded-full cursor-pointer" data-id="{{ narsalar.id }}">
+                        <i class="fa-regular fa-heart text-[14px] text-black"></i>
+                    </span>
+                    <div class="w-[224px] h-[38px] pl-[4px] top-[265px] absolute">
+                        <div class="flex mb-[4px]">
+                            <span class="flex justify-center items-center w-[60px] h-[18px] bg-[#fff] mr-[3px] rounded-full text-[10px]">
+                                <img src="https://static.uzum.uz/market/badge-icons/verified.png" alt="dsdf" width="12" height="12"> Original
+                            </span>
+                            <span class="bg-[#ff4499] text-[#fff] text-[10px] px-[6px] py-[2px] rounded-full">Arzon narx kafolati</span>
+                        </div>
+                        <span class="bg-[#13be4c] text-[#fff] text-[10px] px-[6px] py-[2px] rounded-full">Super narx</span>
+                    </div>
+                    <span class="block text-[#ff4499] font-semibold mt-[6px] text-[14px]">{{ narsalar.asl_narhi }}</span>
+                    <span class="text-[11px] text-[#7e818c] line-through mr-[170px]">{{ narsalar.skid_narhi }}</span>
+                    <span class="text-[11px] text-[#ff4499]">Arzon narx kafolati</span>
+                    <span class="block bg-[#ffff00] w-[98px] h-[18px] text-[11px] flex justify-center items-center rounded-sm mt-[3px]">2 336 so'm/oyiga</span>
+                    <div class="text-[11px] mt-[3px] h-[48px]">{{ narsalar.tavsifi }}</div>
+                    <div class="flex items-center w-[224px] mt-[4px]">
+                        <svg width="12" height="12" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-[5px]">
+                            <path d="M6.32279 0.887954..." fill="#FFB54C"></path>
+                        </svg>
+                        <span class="text-[11px] text-[#7e818c]">4.9 ({{ narsalar.sharhlar }})</span>
+                    </div>
+                </div>
+                <button class="block w-full h-[32px] bg-[#7000FF] text-white rounded-[8px] mt-[5px] hover:bg-[#7F4DFF]">Savatga</button>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<script>
+    const allProducts = [
+        {% for item in narsalar %}
+        {
+            id: "{{ item.id }}",
+            title: "{{ item.tavsifi|escapejs }}",
+            price: "{{ item.asl_narhi }}",
+            old_price: "{{ item.skid_narhi }}",
+            rating: "4.9 ({{ item.sharhlar }})",
+            img: "{{ item.img.url }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+
+    let wishlist = JSON.parse(localStorage.getItem("saralanganlar")) || [];
+
+    const container = document.getElementById("wishlist-container");
+    const emptyBlock = document.getElementById("wishlist-empty");
+    const popularBlock = document.querySelector(".popular-products");
+
+    const renderWishlist = () => {
+        container.innerHTML = "";
+        const filtered = allProducts.filter(p => wishlist.includes(p.id));
+
+        if (popularBlock) {
+            popularBlock.classList.toggle("hidden", filtered.length > 0);
+        }
+
+        if (filtered.length === 0) {
+            emptyBlock.classList.remove("hidden");
+            return;
+        } else {
+            emptyBlock.classList.add("hidden");
+        }
+
+        filtered.forEach(p => {
+            const item = document.createElement("div");
+            item.className = "w-[232px] h-[522px] hover:shadow-xl ease-linear duration-500 p-[4px]";
+            item.innerHTML = `
+                <div class="w-[232px] relative rounded-t-xl overflow-hidden h-[522px] bg-white">
+                    <img src="${p.img}" class="h-[313px] w-full object-cover rounded-xl transform transition-transform hover:scale-105 duration-500" alt="">
+                    <span class="remove-from-wishlist w-[24px] h-[24px] bg-white absolute top-[5px] right-[5px] flex justify-center items-center rounded-full cursor-pointer">
+                        <i class="fa-solid fa-heart text-[14px] text-[#8967F0]"></i>
+                    </span>
+                    <div class="w-[224px] h-[38px] pl-[4px] top-[265px] absolute">
+                        <div class="flex mb-[4px]">
+                            <span class="flex justify-center items-center w-[60px] h-[18px] bg-[#fff] mr-[3px] rounded-full text-[10px]">
+                                <img src="https://static.uzum.uz/market/badge-icons/verified.png" alt="" width="12" height="12"> Original
+                            </span>
+                            <span class="bg-[#ff4499] text-white text-[10px] px-[6px] py-[2px] rounded-full">Arzon narx kafolati</span>
+                        </div>
+                        <span class="bg-[#13be4c] text-white text-[10px] px-[6px] py-[2px] rounded-full">Super narx</span>
+                    </div>
+                    <span class="block text-[#ff4499] font-semibold mt-[6px] text-[14px]">${p.price}</span>
+                    <span class="text-[11px] text-[#7e818c] line-through mr-[170px]">${p.old_price}</span>
+                    <span class="text-[11px] text-[#ff4499]">Arzon narx kafolati</span>
+                    <span class="block bg-[#ffff00] w-[98px] h-[18px] text-[11px] flex justify-center items-center rounded-sm mt-[3px]">2 336 so'm/oyiga</span>
+                    <div class="text-[11px] mt-[3px] h-[48px]">${p.title}</div>
+                    <div class="flex items-center w-[224px] mt-[4px]">
+                        <svg width="12" height="12" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-[5px]">
+                            <path d="M6.32279 0.887954..." fill="#FFB54C"></path>
+                        </svg>
+                        <span class="text-[11px] text-[#7e818c]">${p.rating}</span>
+                    </div>
+                </div>
+                <button class="block w-full h-[32px] bg-[#7000FF] text-white rounded-[8px] mt-[5px] hover:bg-[#7F4DFF]">Savatga</button>
+            `;
+
+
+            item.querySelector(".remove-from-wishlist").addEventListener("click", () => {
+                wishlist = wishlist.filter(id => id !== p.id);
+                localStorage.setItem("saralanganlar", JSON.stringify(wishlist));
+                renderWishlist();
+                updateHeartIcons();
+            });
+
+            container.appendChild(item);
+        });
+    };
+
+    const updateHeartIcons = () => {
+        document.querySelectorAll(".add-to-wishlist").forEach(btn => {
+            const id = btn.getAttribute("data-id");
+            if (wishlist.includes(id)) {
+                btn.innerHTML = '<i class="fa-solid fa-heart text-[#8967F0]"></i>';
+            } else {
+                btn.innerHTML = '<i class="fa-regular fa-heart text-[14px]"></i>';
+            }
+        });
+    };
+
+    const handlePopularHearts = () => {
+        document.querySelectorAll(".add-to-wishlist").forEach(btn => {
+            const id = btn.getAttribute("data-id");
+            btn.addEventListener("click", () => {
+                if (wishlist.includes(id)) {
+                    wishlist = wishlist.filter(i => i !== id);
+                } else {
+                    wishlist.push(id);
+                }
+                localStorage.setItem("saralanganlar", JSON.stringify(wishlist));
+                updateHeartIcons();
+                renderWishlist();
+            });
+        });
+    };
+
+    renderWishlist();
+    handlePopularHearts();
+</script>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+  <!-- Chap panel -->
+  <div>
+    <h1 class="text-2xl font-bold mb-2">Topshirish punkti</h1>
+    <p class="text-gray-600 mb-4">O'zbekiston 406 ta shahridagi topshirish punktlariga bepul yetkazib berish</p>
+
+    <label for="regionSelect" class="block text-sm font-medium mb-2">Viloyat tanlang</label>
+    <select id="regionSelect" class="w-full border rounded px-4 py-2 mb-4" onchange="showPickupPoints()">
+      <option value="toshkent">Toshkent</option>
+      <option value="andijon">Andijon</option>
+    </select>
+
+    <div id="pickupList" class="space-y-4"></div>
+  </div>
+
+  <!-- Xarita panel -->
+  <div>
+    <div id="map" class="w-full h-[500px] rounded shadow"></div>
+  </div>
+</div>
+
+<!-- Leaflet CDN -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+const data = {
+  toshkent: [
+    {
+      name: "Toshkent sh., Mirzo ulug‘bek tumani, Oltintepa ko'chasi, 213 uy",
+      address: "Toshkent sh., Uchtepa tumani, Shirin ko‘chasi, 27 uy",
+      hours: "10:00 - 20:00",
+      fitting: true,
+      lat: 41.2995,
+      lng: 69.2401
+    },
+    {
+      name: "Koratosh mavzesi, 65-uy",
+      address: "Toshkent sh., Shayxontohur tumani, Koratosh mavzesi, 65–uy",
+      hours: "10:00 - 20:00",
+      fitting: true,
+      lat: 41.3164,
+      lng: 69.2489
+    }
+  ],
+  andijon: [
+    {
+      name: "Andijon markaz",
+      address: "Andijon sh., markaziy ko‘cha",
+      hours: "09:00 - 18:00",
+      fitting: false,
+      lat: 40.7821,
+      lng: 72.3442
+    }
+  ]
+};
+
+let map;
+let markers = [];
+
+function initMap() {
+  map = L.map("map").setView([41.3, 69.25], 11);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; OpenStreetMap',
+  }).addTo(map);
+}
+
+function clearMarkers() {
+  markers.forEach(marker => map.removeLayer(marker));
+  markers = [];
+}
+
+function showPickupPoints() {
+  const region = document.getElementById("regionSelect").value;
+  const points = data[region] || [];
+  const container = document.getElementById("pickupList");
+  container.innerHTML = "";
+  clearMarkers();
+
+  if (points.length > 0) {
+    map.setView([points[0].lat, points[0].lng], 12);
+  }
+
+  points.forEach(point => {
+    // Ro‘yxatga qo‘shish
+    const div = document.createElement("div");
+    div.className = "p-3 bg-white rounded border shadow-sm";
+    div.innerHTML = `
+      <h3 class="text-lg font-semibold">${point.name}</h3>
+      <p class="text-sm text-gray-600">${point.address}</p>
+      <p class="text-sm">🕒 Ish vaqti: ${point.hours}</p>
+      <p class="text-sm">👕 Kiyib ko‘rish: <strong>${point.fitting ? "Bor" : "Yo‘q"}</strong></p>
+    `;
+    container.appendChild(div);
+
+    // Xarita marker
+    const marker = L.marker([point.lat, point.lng])
+      .addTo(map)
+      .bindPopup(`<strong>${point.name}</strong><br>${point.address}`);
+    markers.push(marker);
+  });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  initMap();
+  showPickupPoints();
+});
+</script>
+{% endblock %}

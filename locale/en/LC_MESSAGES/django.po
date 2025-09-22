@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-29 17:05+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\Shop\settings.py:102
+msgid "Uzbek"
+msgstr ""
+
+#: .\Shop\settings.py:103
+msgid "Russian"
+msgstr ""
+
+#: .\Shop\settings.py:104
+msgid "English"
+msgstr ""
+
+#: .\backend\templates\base.html:31
+msgid "Uzum Market — O‘zbekistondagi Internet-do'kon va Marketpleys"
+msgstr "Uzum Market — Online Store and Marketplace in Uzbekistan"
+
+#: .\backend\templates\footer.html:5
+msgid "Biz haqimizda"
+msgstr "About Us"
+
+#: .\backend\templates\footer.html:7 .\backend\templates\navigation.html:103
+msgid "Topshirish punktlari"
+msgstr "Delivery points"
+
+#: .\backend\templates\footer.html:8
+msgid "Vakansiyalar"
+msgstr "Vacancies"
+
+#: .\backend\templates\footer.html:12
+msgid "Foydalanuvchilarga"
+msgstr "To users"
+
+#: .\backend\templates\footer.html:14
+msgid "Biz bilan bog'lanish"
+msgstr "contact us"
+
+#: .\backend\templates\footer.html:15
+msgid "Savol-Javob"
+msgstr "Question and Answer"
+
+#: .\backend\templates\footer.html:19
+msgid "Tadbirkorlarga"
+msgstr "To entrepreneurs"
+
+#: .\backend\templates\footer.html:21
+msgid "Uzumda soting"
+msgstr "Sell on Vine"
+
+#: .\backend\templates\footer.html:22
+msgid "Sotuvchi kabinetiga kirish"
+msgstr "Login to the seller's account"
+
+#: .\backend\templates\footer.html:23 .\backend\templates\navigation.html:108
+msgid "Topshirish punktini ochish"
+msgstr "Open a delivery point"
+
+#: .\backend\templates\footer.html:27
+msgid "Ilovani yuklab olish"
+msgstr "Download the application"
+
+#: .\backend\templates\footer.html:77
+msgid "Uzum ijtimoiy tarmoqlarda"
+msgstr "Grapes on social media"
+
+#: .\backend\templates\footer.html:89
+msgid "Maxfiylik kelishuvi"
+msgstr "Confidentiality Agreement"
+
+#: .\backend\templates\footer.html:90
+msgid "Foydalanuvchi kelishuvi"
+msgstr "User Agreement"
+
+#: .\backend\templates\footer.html:92
+msgid ""
+"«2025© XK MCHJ «UZUM MARKET». STIR 309376127. Barcha huquqlar himoyalangan»"
+msgstr "«2025© ХК МХЖ «УЗУМАРТЕ». STIR 309376127. All rights reserved»"
+
+#: .\backend\templates\home.html:75
+msgid "Onalar va bolalar uchun"
+msgstr "For mothers and children"
+
+#: .\backend\templates\home.html:80
+msgid "Arzon narxlar kafolati"
+msgstr "Low price guarantee"
+
+#: .\backend\templates\home.html:85
+msgid "Zamonaviy Bozor"
+msgstr "Modern Bazaar"
+
+#: .\backend\templates\home.html:90
+msgid "Hafta tovarlar"
+msgstr "Weekly goods"
+
+#: .\backend\templates\home.html:98
+msgid "Mashhur"
+msgstr "Famous"
+
+#: .\backend\templates\home.html:122 .\backend\templates\home.html:129
+msgid "Arzon narx kafolati"
+msgstr "Low price guarantee"
+
+#: .\backend\templates\home.html:124
+msgid "Super narx"
+msgstr "Super price"
+
+#: .\backend\templates\home.html:131
+msgid "2336 so'm/oyiga"
+msgstr "2336 soums/month"
+
+#: .\backend\templates\home.html:148
+msgid "Savatga"
+msgstr "To the basket"
+
+#: .\backend\templates\home.html:165
+msgid "Faqat 10 dona bor"
+msgstr "There are only 10 pieces."
+
+#: .\backend\templates\home.html:169
+msgid "Tovar savatga qo'shildi"
+msgstr "Product added to cart"
+
+#: .\backend\templates\navigation.html:96
+msgid "Toshkent"
+msgstr "Tashkent"
+
+#: .\backend\templates\navigation.html:107
+msgid "Sotuvchi bo‘lish"
+msgstr "Become a seller"
+
+#: .\backend\templates\navigation.html:109
+msgid "Savol-javob"
+msgstr "Question and answer"
+
+#: .\backend\templates\navigation.html:110
+msgid "Buyurtmalarim"
+msgstr "My orders"
+
+#: .\backend\templates\navigation.html:159
+msgid "Shaharni tanlang"
+msgstr "Select a city"
+
+#: .\backend\templates\navigation.html:374
+msgid "Katalog"
+msgstr "Catalog"
+
+#: .\backend\templates\navigation.html:382
+msgid "Mahsulotlar va turkumlar izlash"
+msgstr "Search for products and categories"
+
+#: .\backend\templates\navigation.html:415
+msgid "Kirish"
+msgstr "Enter"
+
+#: .\backend\templates\navigation.html:426
+msgid "Saralangan"
+msgstr "Sorted"
+
+#: .\backend\templates\navigation.html:436
+msgid "Savat"
+msgstr "Basket"
+
+#: .\backend\templates\navigation.html:457
+msgid "Hafta tovarlari"
+msgstr "Goods of the week"
+
+#: .\backend\templates\navigation.html:458
+msgid "Elektronika"
+msgstr "Electronics"
+
+#: .\backend\templates\navigation.html:459
+msgid "Maishiy texnika"
+msgstr "Household appliances"
+
+#: .\backend\templates\navigation.html:460
+msgid "Kiyim"
+msgstr "Clothes"
+
+#: .\backend\templates\navigation.html:461
+msgid "Poyabzallar"
+msgstr "Shoes"
+
+#: .\backend\templates\navigation.html:462
+msgid "Aksessuarlar"
+msgstr "Accessories"
+
+#: .\backend\templates\navigation.html:463
+msgid "Go'zallik va parvarish"
+msgstr "Beauty and care"
+
+#: .\backend\templates\navigation.html:464
+msgid "Salomatlik"
+msgstr "Health"
+
+#: .\backend\templates\navigation.html:465
+msgid "Uy ro'zg'or buyumlari"
+msgstr "Household items"
+
+#: .\backend\templates\navigation.html:466
+msgid "Qurilish va ta'mirlash"
+msgstr "Construction and repair"
+
+#: .\backend\templates\navigation.html:467
+msgid "Yana"
+msgstr "Again"
+
+#~ msgid "Buyurtmalarni rasmiylashtirish"
+#~ msgstr "Processing of orders"

@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-29 17:05+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\Shop\settings.py:102
+msgid "Uzbek"
+msgstr ""
+
+#: .\Shop\settings.py:103
+msgid "Russian"
+msgstr ""
+
+#: .\Shop\settings.py:104
+msgid "English"
+msgstr ""
+
+#: .\backend\templates\base.html:31
+msgid "Uzum Market — O‘zbekistondagi Internet-do'kon va Marketpleys"
+msgstr "Uzum Market — Интернет-магазин и Маркетплейс в Узбекистане"
+
+#: .\backend\templates\footer.html:5
+msgid "Biz haqimizda"
+msgstr "О нас"
+
+#: .\backend\templates\footer.html:7 .\backend\templates\navigation.html:103
+msgid "Topshirish punktlari"
+msgstr "Пункты выдачи"
+
+#: .\backend\templates\footer.html:8
+msgid "Vakansiyalar"
+msgstr " Вакансии "
+
+#: .\backend\templates\footer.html:12
+msgid "Foydalanuvchilarga"
+msgstr "Пользователям"
+
+#: .\backend\templates\footer.html:14
+msgid "Biz bilan bog'lanish"
+msgstr " Связаться с нами "
+
+#: .\backend\templates\footer.html:15
+msgid "Savol-Javob"
+msgstr "Вопрос-ответ"
+
+#: .\backend\templates\footer.html:19
+msgid "Tadbirkorlarga"
+msgstr "Для предпринимателей"
+
+#: .\backend\templates\footer.html:21
+msgid "Uzumda soting"
+msgstr " Продавайте на Uzum "
+
+#: .\backend\templates\footer.html:22
+msgid "Sotuvchi kabinetiga kirish"
+msgstr " Вход для продавцов "
+
+#: .\backend\templates\footer.html:23 .\backend\templates\navigation.html:108
+msgid "Topshirish punktini ochish"
+msgstr "Открыть пункт выдачи"
+
+#: .\backend\templates\footer.html:27
+msgid "Ilovani yuklab olish"
+msgstr "Скачать приложение"
+
+#: .\backend\templates\footer.html:77
+msgid "Uzum ijtimoiy tarmoqlarda"
+msgstr "Uzum в соцсетях"
+
+#: .\backend\templates\footer.html:89
+msgid "Maxfiylik kelishuvi"
+msgstr "Соглашение о конфиденциальности"
+
+#: .\backend\templates\footer.html:90
+msgid "Foydalanuvchi kelishuvi"
+msgstr "Пользовательское соглашение"
+
+#: .\backend\templates\footer.html:92
+msgid ""
+"«2025© XK MCHJ «UZUM MARKET». STIR 309376127. Barcha huquqlar himoyalangan»"
+msgstr "«2025© ООО «UZUM MARKET». ИНН 309376127. Все права защищены»"
+
+#: .\backend\templates\home.html:75
+msgid "Onalar va bolalar uchun"
+msgstr "Детский мир"
+
+#: .\backend\templates\home.html:80
+msgid "Arzon narxlar kafolati"
+msgstr "Гарантия низких цен"
+
+#: .\backend\templates\home.html:85
+msgid "Zamonaviy Bozor"
+msgstr "Модный Базар"
+
+#: .\backend\templates\home.html:90
+msgid "Hafta tovarlar"
+msgstr "Товары недели"
+
+#: .\backend\templates\home.html:98
+msgid "Mashhur"
+msgstr "Популярное"
+
+#: .\backend\templates\home.html:122 .\backend\templates\home.html:129
+msgid "Arzon narx kafolati"
+msgstr "Гарантия низкой цены"
+
+#: .\backend\templates\home.html:124
+msgid "Super narx"
+msgstr "Суперцена"
+
+#: .\backend\templates\home.html:131
+msgid "2336 so'm/oyiga"
+msgstr "2336 сум/мес."
+
+#: .\backend\templates\home.html:148
+msgid "Savatga"
+msgstr "В корзину"
+
+#: .\backend\templates\home.html:165
+msgid "Faqat 10 dona bor"
+msgstr "Их всего 10 штук."
+
+#: .\backend\templates\home.html:169
+msgid "Tovar savatga qo'shildi"
+msgstr "Товар добавлен в корзину"
+
+#: .\backend\templates\navigation.html:96
+msgid "Toshkent"
+msgstr "Ташкент"
+
+#: .\backend\templates\navigation.html:107
+msgid "Sotuvchi bo‘lish"
+msgstr "Стать продавцом"
+
+#: .\backend\templates\navigation.html:109
+msgid "Savol-javob"
+msgstr "Вопрос-ответ"
+
+#: .\backend\templates\navigation.html:110
+msgid "Buyurtmalarim"
+msgstr "Мои заказы"
+
+#: .\backend\templates\navigation.html:159
+msgid "Shaharni tanlang"
+msgstr "Выберите город"
+
+#: .\backend\templates\navigation.html:374
+msgid "Katalog"
+msgstr "Каталог"
+
+#: .\backend\templates\navigation.html:382
+msgid "Mahsulotlar va turkumlar izlash"
+msgstr "Искать товары и категории"
+
+#: .\backend\templates\navigation.html:415
+msgid "Kirish"
+msgstr "Войти"
+
+#: .\backend\templates\navigation.html:426
+msgid "Saralangan"
+msgstr "Избранное"
+
+#: .\backend\templates\navigation.html:436
+msgid "Savat"
+msgstr "Корзина"
+
+#: .\backend\templates\navigation.html:457
+msgid "Hafta tovarlari"
+msgstr "Товары недели"
+
+#: .\backend\templates\navigation.html:458
+msgid "Elektronika"
+msgstr " Электроника "
+
+#: .\backend\templates\navigation.html:459
+msgid "Maishiy texnika"
+msgstr " Бытовая техника "
+
+#: .\backend\templates\navigation.html:460
+msgid "Kiyim"
+msgstr " Одежда "
+
+#: .\backend\templates\navigation.html:461
+msgid "Poyabzallar"
+msgstr " Обувь "
+
+#: .\backend\templates\navigation.html:462
+msgid "Aksessuarlar"
+msgstr " Аксессуары "
+
+#: .\backend\templates\navigation.html:463
+msgid "Go'zallik va parvarish"
+msgstr " Красота и уход "
+
+#: .\backend\templates\navigation.html:464
+msgid "Salomatlik"
+msgstr " Здоровье "
+
+#: .\backend\templates\navigation.html:465
+msgid "Uy ro'zg'or buyumlari"
+msgstr " Товары для дома "
+
+#: .\backend\templates\navigation.html:466
+msgid "Qurilish va ta'mirlash"
+msgstr " Строительство и ремонт "
+
+#: .\backend\templates\navigation.html:467
+msgid "Yana"
+msgstr " Ещё "
+
+#, fuzzy
+#~ msgid "Buyurtmalarni rasmiylashtirish"
+#~ msgstr "Оформить заказ"

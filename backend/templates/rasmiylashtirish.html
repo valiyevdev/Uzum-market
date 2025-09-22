@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uzum Market - Buyurtma rasmiylashtirish</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#7000FF',
+            secondary: '#F4F4F7',
+            card: '#F9F9FC',
+            success: '#00B517',
+            warning: '#FF9017',
+            danger: '#FA3434'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .radio-input:checked + .radio-label {
+      border-color: #7000FF;
+      background-color: #F5F0FF;
+    }
+    .district-item:hover {
+      border-color: #7000FF;
+      background-color: #F9F5FF;
+    }
+  </style>
+</head>
+<body class="bg-secondary text-[#1C1C1C]">
+  <div class="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Left Section -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Delivery Method -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm">
+        <h2 class="text-xl font-semibold mb-5 flex items-center gap-2">
+          <i class="fas fa-truck text-primary"></i>
+          Yetkazib berish usuli
+        </h2>
+        
+        <p class="text-sm text-gray-500 mb-3">Uzum Market yetkazib berishi</p>
+        
+        <div class="flex flex-wrap gap-3 mb-6">
+          <button id="pickupBtn" class="px-5 py-2.5 rounded-xl text-sm font-medium border-2 border-primary text-primary bg-white flex items-center gap-2">
+            <i class="fas fa-store"></i>
+            Topshirish punkti <span class="text-success">• bepul</span>
+          </button>
+          <button id="courierBtn" class="px-5 py-2.5 rounded-xl text-sm font-medium border-2 border-gray-200 text-gray-700 flex items-center gap-2">
+            <i class="fas fa-motorcycle"></i>
+            Kuryer <span class="text-gray-500">• 30 000 soʻm</span>
+          </button>
+        </div>
+        
+        <!-- Pickup Point Selection (shown when pickup selected) -->
+        <div id="pickupSection" class="bg-card p-4 rounded-xl mb-4">
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm font-medium text-gray-500 mb-1">Topshirish punkti</p>
+              <p id="selectedPoint" class="text-sm font-medium">Tanlanmagan</p>
+            </div>
+            <button onclick="toggleLocationModal()" class="text-primary font-semibold text-sm flex items-center gap-1">
+              <i class="fas fa-map-marker-alt"></i>
+              Tanlash
+            </button>
+          </div>
+        </div>
+        
+        <!-- Courier Address (shown when courier selected) -->
+        <div id="courierSection" class="hidden bg-card p-4 rounded-xl mb-4">
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm font-medium text-gray-500 mb-1">Manzil</p>
+              <p id="selectedAddress" class="text-sm font-medium">Tanlanmagan</p>
+            </div>
+            <button onclick="toggleAddressModal()" class="text-primary font-semibold text-sm flex items-center gap-1">
+              <i class="fas fa-edit"></i>
+              Tanlash
+            </button>
+          </div>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="bg-card p-4 rounded-xl flex items-center justify-between cursor-pointer" onclick="editContactInfo()">
+          <div>
+            <p class="text-sm font-medium flex items-center gap-2">
+              <i class="fas fa-user text-gray-400"></i>
+              Humoyun Mamasodiqov
+            </p>
+            <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+              <i class="fas fa-phone text-gray-400"></i>
+              +998 93 332 03 35
+            </p>
+          </div>
+          <i class="fas fa-chevron-right text-gray-400"></i>
+        </div>
+      </div>
+
+      <!-- Delivery Date -->
+      <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4">
+        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary">
+          <i class="fas fa-calendar-alt text-xl"></i>
+        </div>
+        <div>
+          <p class="text-sm font-medium">Yetkazib berish muddati</p>
+          <p class="text-sm text-gray-700 dynamic-date">5-avgust, yakshanba • 09:00-18:00</p>
+        </div>
+      </div>
+
+
+      <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4">
+        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary">
+          <img class="w-[64px] h-[64px] rounded-lg"  src="/static/img/kl.jpg" alt="">
+        </div>
+        <div>
+        </div>
+      </div>
+
+
+      <!-- Payment Method -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm">
+        <h2 class="text-xl font-semibold mb-5 flex items-center gap-2">
+          <i class="fas fa-credit-card text-primary"></i>
+          Toʻlov usuli
+        </h2>
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+     
+          
+          <div class="space-y-3">
+            <!-- Uzum Card -->
+            <label class="block">
+              <input type="radio" name="payment" class="absolute opacity-0">
+              <div class="border-2 border-gray-200 rounded-xl p-4 cursor-pointer hover:border-primary transition-all duration-200 peer-checked:border-primary peer-checked:bg-purple-50">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+                    <i class="fas fa-credit-card text-sm"></i>
+                  </div>
+                  <span class="font-medium">Uzum kartasi bilan</span>
+                  <div class="text-xs text-white bg-primary rounded-full px-2 py-1 ml-auto">30% gacha chegirma</div>
+                </div>
+                <p class="text-sm text-gray-500 ml-11">Uzum Bank ilovasidagi kartani rasmiylashtirish va buyurtma uchun to'lov qilish</p>
+              </div>
+            </label>
+            
+            <!-- Online Card -->
+            <label class="block">
+              <input type="radio" name="payment" class="absolute opacity-0">
+              <div class="border-2 border-gray-200 rounded-xl p-4 cursor-pointer hover:border-primary transition-all duration-200 peer-checked:border-primary peer-checked:bg-purple-50">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600">
+                    <i class="fas fa-globe text-sm"></i>
+                  </div>
+                  <span class="font-medium">Karta orqali onlayn</span>
+                </div>
+                <p class="text-sm text-gray-500 ml-11">UZCARD, HUMO, Uzum karta, Uzum Bank</p>
+                <div class="flex gap-2 mt-2 ml-11">
+                  <img src="/static/img/humocart.png" class="h-5" alt="HUMO">
+                  <img src="/static/img/uzcart.png" class="h-5" alt="UZCARD">
+                  <img src="/static/img/uzumvisacart.png" class="h-5" alt="Visa">
+                  <img src="/static/img/Uzum_bank_logo.png" class="h-5" alt="Mastercard">
+                </div>
+              </div>
+            </label>
+            
+            <!-- Cash on Delivery -->
+            <label class="block">
+              <input type="radio" name="payment" class="absolute opacity-0">
+              <div class="border-2 border-gray-200 rounded-xl p-4 cursor-pointer hover:border-primary transition-all duration-200 peer-checked:border-primary peer-checked:bg-purple-50">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600">
+                    <i class="fas fa-money-bill-wave text-sm"></i>
+                  </div>
+                  <span class="font-medium">Olinganda to'lov</span>
+                </div>
+                <p class="text-sm text-gray-500 ml-11">Kuryerga - naqd yoki QR bilan, punktlarda - naqd va karta</p>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <!-- Payment options here (same as before) -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="space-y-6">
+      <!-- Order Summary -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm sticky top-6">
+        <h2 class="text-lg font-semibold mb-5 flex items-center gap-2">
+          <i class="fas fa-shopping-bag text-primary"></i>
+          Buyurtma xulosasi
+        </h2>
+        
+        <div class="space-y-3 mb-4">
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Mahsulotlar (1)</span>
+            <span>850 000 so'm</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Yetkazib berish</span>
+            <span id="deliveryPrice" class="text-gray-600">bepul</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Chegirmalar</span>
+            <span class="text-success">-482 200 so'm</span>
+          </div>
+        </div>
+        
+        <div class="border-t pt-4 mb-5">
+          <div class="flex justify-between font-bold text-lg">
+            <span>Jami</span>
+            <span id="totalPrice">367 800 so'm</span>
+          </div>
+        </div>
+        
+        <button class="w-full py-3.5 bg-primary hover:bg-purple-700 text-white rounded-xl font-medium flex items-center justify-center gap-2">
+          <i class="fas fa-lock"></i>
+          Buyurtmani rasmiylashtirish
+        </button>
+      </div>
+      
+      <!-- Promo Code -->
+      <div class="bg-white p-5 rounded-2xl shadow-sm">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-percentage"></i>
+          </div>
+          <span class="text-sm font-medium">Promokod</span>
+        </div>
+        
+        <div class="relative">
+          <input type="text" placeholder="Promokod kiriting" class="w-full p-3 pr-10 border border-gray-300 rounded-lg text-sm">
+          <button class="absolute right-3 top-3 text-primary">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location Selection Modal -->
+  <div id="locationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-white rounded-2xl w-full max-w-md max-h-[80vh] overflow-y-auto">
+      <div class="p-5 border-b sticky top-0 bg-white z-10">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold">Topshirish punktini tanlang</h3>
+          <button onclick="toggleLocationModal()" class="text-gray-500">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="mt-3 relative">
+          <input type="text" placeholder="Qidirish..." class="w-full p-2 pl-9 border rounded-lg text-sm">
+          <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+        </div>
+      </div>
+      
+      <div class="p-5">
+        <div class="mb-4">
+          <h4 class="font-medium mb-2">Viloyat</h4>
+          <select id="regionSelect" onchange="updateDistricts()" class="w-full p-2 border rounded-lg text-sm">
+            <option disabled selected>Viloyatni tanlang</option>
+            <option value="toshkent">Toshkent</option>
+            <option value="andijon">Andijon</option>
+            <option value="fargona">Farg'ona</option>
+            <option value="namangan">Namangan</option>
+            <option value="samarqand">Samarqand</option>
+            <option value="buxoro">Buxoro</option>
+            <option value="xorazm">Xorazm</option>
+            <option value="qashqadaryo">Qashqadaryo</option>
+            <option value="surxondaryo">Surxondaryo</option>
+            <option value="jizzax">Jizzax</option>
+            <option value="sirdaryo">Sirdaryo</option>
+            <option value="navoiy">Navoiy</option>
+            <option value="qoraqalpogiston">Qoraqalpog'iston</option>
+          </select>
+        </div>
+        
+        <div id="districtsContainer" class="space-y-3">
+          <!-- Districts will be populated here dynamically -->
+          <p class="text-center text-gray-500 py-10">Viloyat tanlang</p>
+        </div>
+      </div>
+      
+      <div class="p-5 border-t sticky bottom-0 bg-white">
+        <button onclick="selectPickupPoint()" class="w-full py-3 bg-primary text-white rounded-lg font-medium">
+          Tanlash
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Address Selection Modal -->
+  <div id="addressModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-white rounded-2xl w-full max-w-md">
+      <div class="p-5 border-b">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold">Manzilni tanlang</h3>
+          <button onclick="toggleAddressModal()" class="text-gray-500">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="p-5">
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1">Ko'cha nomi</label>
+          <input type="text" id="streetInput" class="w-full p-2 border rounded-lg text-sm" placeholder="Ko'cha nomini kiriting">
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1">Uy raqami</label>
+          <input type="text" id="houseInput" class="w-full p-2 border rounded-lg text-sm" placeholder="Uy raqamini kiriting">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Qo'shimcha ma'lumot</label>
+          <textarea id="addressNotes" class="w-full p-2 border rounded-lg text-sm" placeholder="Masalan, uy qo'ng'iroq kodi"></textarea>
+        </div>
+      </div>
+      
+      <div class="p-5 border-t">
+        <button onclick="saveAddress()" class="w-full py-3 bg-primary text-white rounded-lg font-medium">
+          Saqlash
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+
+ // Sanani 5 kun keyinga olish
+ function getDeliveryDate() {
+      const today = new Date();
+      today.setDate(today.getDate() + 5);
+
+      const oylar = [
+        "yanvar", "fevral", "mart", "aprel", "may", "iyun",
+        "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"
+      ];
+
+      const day = today.getDate();
+      const month = oylar[today.getMonth()];
+      return `${day}-${month}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateElements = document.querySelectorAll(".dynamic-date");
+      const dateText = getDeliveryDate();
+      dateElements.forEach(el => el.innerText = dateText);
+    });
+    // Delivery data
+    const deliveryData = {
+      toshkent: [
+        "Yunusobod tumani", 
+        "Mirzo Ulug'bek tumani",
+        "Chilonzor tumani",
+        "Shayxontoxur tumani",
+        "Olmazor tumani"
+      ],
+      andijon: [
+        "Andijon shahar",
+        "Asaka tumani",
+        "Baliqchi tumani",
+        "Bo'ston tumani",
+        "Buloqboshi tumani"
+      ],
+      fargona: [
+        "Farg'ona shahar",
+        "Qo'qon shahar",
+        "Marg'ilon shahar",
+        "Beshariq tumani",
+        "Bog'dod tumani"
+      ],
+      // Add more regions as needed
+    };
+
+    // Delivery method toggle
+    const pickupBtn = document.getElementById('pickupBtn');
+    const courierBtn = document.getElementById('courierBtn');
+    const pickupSection = document.getElementById('pickupSection');
+    const courierSection = document.getElementById('courierSection');
+    const deliveryPrice = document.getElementById('deliveryPrice');
+    const totalPrice = document.getElementById('totalPrice');
+    const productPrice = 850000;
+    const discount = 482200;
+    const courierFee = 30000;
+
+    function updateTotalPrice() {
+      const isCourier = courierBtn.classList.contains('border-primary');
+      const deliveryCost = isCourier ? courierFee : 0;
+      const total = (productPrice - discount) + deliveryCost;
+      
+      deliveryPrice.textContent = isCourier ? '30 000 so\'m' : 'bepul';
+      totalPrice.textContent = total.toLocaleString('uz-UZ') + ' so\'m';
+    }
+
+    pickupBtn.onclick = () => {
+      pickupBtn.classList.add('border-primary', 'text-primary', 'bg-white');
+      pickupBtn.classList.remove('border-gray-200', 'text-gray-700');
+      courierBtn.classList.add('border-gray-200', 'text-gray-700');
+      courierBtn.classList.remove('border-primary', 'text-primary', 'bg-white');
+      pickupSection.classList.remove('hidden');
+      courierSection.classList.add('hidden');
+      updateTotalPrice();
+    }
+
+    courierBtn.onclick = () => {
+      courierBtn.classList.add('border-primary', 'text-primary', 'bg-white');
+      courierBtn.classList.remove('border-gray-200', 'text-gray-700');
+      pickupBtn.classList.add('border-gray-200', 'text-gray-700');
+      pickupBtn.classList.remove('border-primary', 'text-primary', 'bg-white');
+      pickupSection.classList.add('hidden');
+      courierSection.classList.remove('hidden');
+      updateTotalPrice();
+    }
+
+    // Location modal functions
+    function toggleLocationModal() {
+      const modal = document.getElementById('locationModal');
+      modal.classList.toggle('hidden');
+    }
+
+    function toggleAddressModal() {
+      const modal = document.getElementById('addressModal');
+      modal.classList.toggle('hidden');
+    }
+
+    // Update districts based on selected region
+    function updateDistricts() {
+      const regionSelect = document.getElementById('regionSelect');
+      const selectedRegion = regionSelect.value;
+      const districtsContainer = document.getElementById('districtsContainer');
+      
+      if (!selectedRegion || !deliveryData[selectedRegion]) {
+        districtsContainer.innerHTML = '<p class="text-center text-gray-500 py-10">Viloyat tanlang</p>';
+        return;
+      }
+      
+      let districtsHTML = '';
+      deliveryData[selectedRegion].forEach(district => {
+        districtsHTML += `
+          <div class="district-item border rounded-lg p-3 cursor-pointer" onclick="selectDistrict('${district}')">
+            <p class="font-medium">${district}</p>
+            <p class="text-sm text-gray-500 mt-1">Uzum Market ${district}</p>
+          </div>
+        `;
+      });
+      
+      districtsContainer.innerHTML = districtsHTML;
+    }
+
+    let selectedDistrict = null;
+    function selectDistrict(district) {
+      selectedDistrict = district;
+      // Highlight selected district
+      document.querySelectorAll('.district-item').forEach(item => {
+        item.classList.remove('border-primary', 'bg-purple-50');
+        if (item.textContent.includes(district)) {
+          item.classList.add('border-primary', 'bg-purple-50');
+        }
+      });
+    }
+
+    function selectPickupPoint() {
+      if (!selectedDistrict) {
+        alert('Iltimos, tuman tanlang!');
+        return;
+      }
+      document.getElementById('selectedPoint').textContent = `Uzum Market ${selectedDistrict}`;
+      toggleLocationModal();
+    }
+
+    // Address functions
+    function saveAddress() {
+      const street = document.getElementById('streetInput').value;
+      const house = document.getElementById('houseInput').value;
+      const notes = document.getElementById('addressNotes').value;
+      
+      if (!street || !house) {
+        alert('Iltimos, ko\'cha va uy raqamini kiriting!');
+        return;
+      }
+      
+      document.getElementById('selectedAddress').textContent = `${street} ${house}`;
+      toggleAddressModal();
+    }
+
+    // Initialize with pickup selected
+    pickupBtn.click();
+  </script>
+</body>
+</html>

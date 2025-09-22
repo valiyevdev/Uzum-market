@@ -1,0 +1,788 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container_large {
+        max-width: 1240px;
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+
+
+
+
+
+
+    .color-circle {
+        width: 24px;
+        height: 24px;
+        border-radius: 9999px;
+        margin-right: 12px;
+        cursor: pointer;
+    }
+
+    .color-circle.active {
+        outline: 2px solid black;
+        outline-offset: 2px;
+    }
+
+
+    .circle {
+        width: 24px;
+        height: 24px;
+        border-radius: 9999px;
+        margin-right: 12px;
+        cursor: pointer;
+    }
+
+    .circle.active {
+        outline: 2px solid #7000ff;
+        outline-offset: 2px;
+    }
+    
+</style>
+
+<div class="container_large">
+    <div class="mt-[20px]  flex justify-between">
+        <div class="w-[360px] p">
+            <h1 class="font-semibold text-[#404146]">Turkumlar</h1>
+            <div class="mt-[10px]">
+                <div
+                    class="text-[14px] w-[160px] py-[6px] px-[8px] pr-[20px] text-[#404146] hover:bg-[#D6D9DE] rounded-lg">
+                    <i class="fa-solid fa-chevron-left mr-[2px] text-[10px]"></i> Barcha turkumlar
+                </div>
+                <div class="w-[287px] mt-[5px] ml-[20px] mb-[36px] flex flex-col">
+                    <div class="cursor-pointer">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] bg-[#e6e8ed] text-[#404146] rounded-lg">{{ category_display }}</span>
+                    </div>
+                    <a href="{% url 'narsalar_list' 'elektronika' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Elektronika</span>
+                    </a>
+                    <a href="{% url 'narsalar_list' 'maishiytexnika' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Maishiy texnika</span>
+                    </a>
+                    <a href="{% url 'narsalar_list' 'kiyim' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Kiyim</span>
+                    </a>
+                    <a href="{% url 'narsalar_list' 'poyabzallar' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Poyabzallar</span>
+                    </a>
+                    <a href="{% url 'narsalar_list' 'aksessuarlar' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Aksesuarlar</span>
+                    </a>
+                    <a href="{% url 'narsalar_list' 'gozallikvaparvarish' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Go'zallik va parvarish</span>
+                    </a>
+                    <a href="{% url 'narsalar_list' 'salomatlik' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Salomatlik</span>
+                    </a>
+                    <a href="{% url 'narsalar_list' 'uyrozgorbuyumlari' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Uy-ro'zg'or buyumlari</span>
+                    </a>
+                    <a href="{% url 'narsalar_list' 'qurilishvatamirlash' %}" class="mt-[8px] inline-block">
+                        <span
+                            class="text-[14px] py-[6px] px-[8px] hover:bg-[#D6D9DE] text-[#404146] rounded-lg">Qurilish va tamirlash</span>
+                    </a>
+                </div>
+            </div>
+     
+
+
+
+            <div class="w-72 bg-white rounded-2xl  shadow-sm border border-gray-100 overflow-hidden pr-[50px]">
+                <form class="" method="get" action="{% url 'narsalar_list' category %}">
+                    <!-- Header -->
+                    <div class="p-5 border-b border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"></path>
+                            </svg>
+                            Filtrlash
+                        </h3>
+                    </div>
+            
+                    <!-- Price Range - Modern Version -->
+                    <div class="p-5 border-b border-gray-100">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-sm font-medium text-gray-700">Narx oralig'i</span>
+                            <span class="text-xs text-gray-500">{{ min_price|default:0 }} - {{ max_price|default:"12,999,900" }} so'm</span>
+                        </div>
+                        
+                        <div class="relative">
+                            
+                            <div class="absolute flex justify-between w-full -bottom-1">
+                                <div class="relative">
+                                    
+                                    <input type="range" min="0" max="12999900" value="{{ min_price|default:0 }}" 
+                                           class="absolute w-full h-1 opacity-0 cursor-pointer" 
+                                           oninput="updatePriceRange(this.value, 'min')">
+                                </div>
+                                <div class="relative">
+                                    
+                                    <input type="range" min="0" max="12999900" value="{{ max_price|default:12999900 }}" 
+                                           class="absolute w-full h-1 opacity-0 cursor-pointer" 
+                                           oninput="updatePriceRange(this.value, 'max')">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3 mt-6">
+                            <div class="flex-1">
+                                <label class="block text-xs text-gray-500 mb-1">Minimum</label>
+                                <div class="relative">
+                                    <input id="min_price" name="min_price" type="number" 
+                                           class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                                           value="{{ min_price }}">
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <label class="block text-xs text-gray-500 mb-1">Maksimum</label>
+                                <div class="relative">
+                                    <input id="max_price" name="max_price" type="number" 
+                                           class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                                           value="{{ max_price }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Original Product - Modern Toggle -->
+                    <div class="p-5 border-b border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm font-medium text-gray-700">Original mahsulot</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" name="original" value="1" class="sr-only peer" {% if original %}checked{% endif %}>
+                                <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500"></div>
+                            </label>
+                        </div>
+                    </div>
+            
+                    <!-- Action Buttons - Modern Style -->
+                    <div class="p-5 flex space-x-3">
+                        <button type="submit" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition duration-200">
+                            Qo'llash
+                        </button>
+                        <a href="{% url 'narsalar_list' category %}" class="flex-1 py-2.5 text-center text-indigo-600 hover:text-indigo-800 text-sm font-medium border border-indigo-600 hover:border-indigo-800 rounded-lg transition duration-200">
+                            Tozalash
+                        </a>
+                    </div>
+                </form>
+            </div>
+            
+
+            <h1 class="font-semibold text-[#404146] mt-[30px] mb-[20px]">Qurilma modeli</h1>
+
+            <div class="max-w-xl mx-auto">
+                <div id="device-list" class="space-y-2">
+
+                    <label class="flex items-center space-x-3">
+                        <input type="radio" name="device" class="device-checkbox accent-[#7000FF]" value="Ajib I15">
+                        <span class="text-sm font-medium text-gray-800">Ajib I15</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="radio" name="device" class="device-checkbox accent-[#7000FF]" value="Ajib i25">
+                        <span class="text-sm font-medium text-gray-800">Ajib i25</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="radio" name="device" class="device-checkbox accent-[#7000FF]"
+                            value="CORN Ultra 10">
+                        <span class="text-sm font-medium text-gray-800">CORN Ultra 10</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="radio" name="device" class="device-checkbox accent-[#7000FF]"
+                            value="CORN C16 Pro Max">
+                        <span class="text-sm font-medium text-gray-800">CORN C16 Pro Max</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="radio" name="device" class="device-checkbox accent-[#7000FF]"
+                            value="Google Pixel 7">
+                        <span class="text-sm font-medium text-gray-800">Google Pixel 7</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="radio" name="device" class="device-checkbox accent-[#7000FF]" value="Nokia 3310">
+                        <span class="text-sm font-medium text-gray-800">Nokia 3310</span>
+                    </label>
+                </div>
+                <button id="show-more"
+                    class="mt-4 text-[#7e818c] text-[13px] border-b border-dashed hover:border-solid hover:border-black w-fi">Yana
+                    608</button>
+                <button id="hide-more"
+                    class="mt-4 text-[#7e818c] text-[13px] border-b border-dashed hover:border-solid hover:border-black w-fi hidden">yopish</button>
+
+                <p id="selected-device" class="mt-4 text-center text-sm text-gray-600"></p>
+            </div>
+
+
+            <h1 class="font-semibold text-[#404146] mt-[30px] mb-[20px]">Rang</h1>
+
+            <div id="ranglar" class="flex flex-col">
+                <div class="flex items-center mt-2">
+                    <div class="circle bg-[#744F4C]" data-name="Jigarrang"></div>
+                    <span class="text-[13px] font-semibold text-[#404146]">Jigarrang</span>
+                </div>
+                <div class="flex items-center mt-2">
+                    <div class="circle bg-[#D22529]" data-name="Qizil"></div>
+                    <span class="text-[13px] font-semibold text-[#404146]">Qizil</span>
+                </div>
+                <div class="flex items-center mt-2">
+                    <div class="circle bg-[#3E9F3C]" data-name="Yashil"></div>
+                    <span class="text-[13px] font-semibold text-[#404146]">Yashil</span>
+                </div>
+                <div class="flex items-center mt-2">
+                    <div class="circle bg-[#989475]" data-name="Xaki"></div>
+                    <span class="text-[13px] font-semibold text-[#404146]">Xaki</span>
+                </div>
+                <div class="flex items-center mt-2 mb-3">
+                    <div class="circle bg-[#FB7DC1]" data-name="Pushti"></div>
+                    <span class="text-[13px] font-semibold text-[#404146]">Pushti</span>
+                </div>
+
+                <div id="extraColors" class="hidden">
+                    <div class="flex items-center mt-2">
+                        <div class="circle bg-[#000000]" data-name="Qora"></div>
+                        <span class="text-[13px] font-semibold text-[#404146]">Qora</span>
+                    </div>
+                    <div class="flex items-center mt-2">
+                        <div class="circle bg-[#e2b714]" data-name="Oq"></div>
+                        <span class="text-[13px] font-semibold text-[#404146]">yorqin sariq</span>
+                    </div>
+                    <div class="flex items-center mt-2">
+                        <div class="circle bg-[#FFA500]" data-name="To'q sariq"></div>
+                        <span class="text-[13px] font-semibold text-[#404146]">Orange</span>
+                    </div>
+                    <div class="flex items-center mt-2">
+                        <div class="circle bg-[#A020F0]" data-name="Binafsha"></div>
+                        <span class="text-[13px] font-semibold text-[#404146]">Binafsha</span>
+                    </div>
+                    <div class="flex items-center mt-2 mb-3">
+                        <div class="circle bg-[#87CEEB]" data-name="Ko'k"></div>
+                        <span class="text-[13px] font-semibold text-[#404146]">Ko'k</span>
+                    </div>
+                </div>
+
+                <button id="toggleBtn"
+                    class="text-[#7e818c] text-[13px] border-b border-dashed hover:border-solid hover:border-black w-fit">
+                    yana 10
+                </button>
+            </div>
+
+            <!-- bread -->
+            <h1 class="font-semibold text-[#404146] mt-[30px] mb-[20px]">Brend</h1>
+
+            <div class="max-w-xl mx-auto">
+                <div id="brand-list" class="space-y-3">
+                    <label class="brand-item flex items-center gap-3">
+                        <input type="radio" name="brand" class="brand-radio w-4 h-4 text-blue-600 accent-[#7000FF]"
+                            value="Forris">
+                        <span class="text-sm font-medium text-gray-800">Forris</span>
+                    </label>
+                    <label class="brand-item flex items-center gap-3">
+                        <input type="radio" name="brand" class="brand-radio w-4 h-4 text-blue-600 accent-[#7000FF]"
+                            value="Lemokey">
+                        <span class="text-sm font-medium text-gray-800">Lemokey</span>
+                    </label>
+                    <label class="brand-item flex items-center gap-3">
+                        <input type="radio" name="brand" class="brand-radio w-4 h-4 text-blue-600 accent-[#7000FF]"
+                            value="OTG">
+                        <span class="text-sm font-medium text-gray-800">OTG</span>
+                    </label>
+                    <label class="brand-item flex items-center gap-3">
+                        <input type="radio" name="brand" class="brand-radio w-4 h-4 text-blue-600 accent-[#7000FF]"
+                            value="Oydin Elektrik">
+                        <span class="text-sm font-medium text-gray-800">Oydin Elektrik</span>
+                    </label>
+                    <label class="brand-item flex items-center gap-3">
+                        <input type="radio" name="brand" class="brand-radio w-4 h-4 text-blue-600 accent-[#7000FF]"
+                            value="Sunmi">
+                        <span class="text-sm font-medium text-gray-800">Sunmi</span>
+                    </label>
+                    <label class="brand-item flex items-center gap-3">
+                        <input type="radio" name="brand" class="brand-radio w-4 h-4 text-blue-600 accent-[#7000FF]"
+                            value="Weibo">
+                        <span class="text-sm font-medium text-gray-800">Weibo</span>
+                    </label>
+                </div>
+
+                <div class="flex justify-start items-center gap-4 mt-4">
+                    <button id="expand-brands"
+                        class="btn-expand text-sm text-gray-500 border-b border-dashed hover:border-solid hover:border-black">
+                        Yana 902
+                    </button>
+                    <button id="collapse-brands"
+                        class="btn-collapse text-sm text-gray-500 border-b border-dashed hover:border-solid hover:border-black hidden">
+                        Yopish
+                    </button>
+                </div>
+
+                <p id="selected-brand" class="mt-4 text-center text-sm text-gray-600"></p>
+            </div>
+
+
+
+
+            <!-- material -->
+
+
+            <h1 class="ont-semibold text-[#404146] mt-[30px] mb-[20px]">Material</h1>
+
+            <div class="max-w-xl mx-auto">
+                <div id="material-list" class="space-y-3">
+
+                    <label class="flex items-center gap-3">
+                        <input type="radio" name="material" class="material-radio accent-[#7000FF] rounded-lg"
+                            value="3D mesh">
+                        <span class="text-sm font-medium text-gray-800">3D mesh</span>
+                    </label>
+                    <label class="flex items-center gap-3">
+                        <input type="radio" name="material" class="material-radio accent-[#7000FF] rounded-lg"
+                            value="3d to'r">
+                        <span class="text-sm font-medium text-gray-800">3d to'r</span>
+                    </label>
+                    <label class="flex items-center gap-3">
+                        <input type="radio" name="material" class="material-radio accent-[#7000FF] rounded-lg"
+                            value="ABS plastik">
+                        <span class="text-sm font-medium text-gray-800">ABS plastik</span>
+                    </label>
+                    <label class="flex items-center gap-3">
+                        <input type="radio" name="material" class="material-radio accent-[#7000FF] rounded-lg"
+                            value="PLA plastik">
+                        <span class="text-sm font-medium text-gray-800">PLA plastik</span>
+                    </label>
+                    <label class="flex items-center gap-3">
+                        <input type="radio" name="material" class="material-radio accent-[#7000FF] rounded-lg"
+                            value="POM">
+                        <span class="text-sm font-medium text-gray-800">POM</span>
+                    </label>
+                    <label class="flex items-center gap-3">
+                        <input type="radio" name="material" class="material-radio accent-[#7000FF] rounded-lg"
+                            value="SBS plastik">
+                        <span class="text-sm font-medium text-gray-800">SBS plastik</span>
+                    </label>
+                </div>
+
+                <button id="show-more-materials"
+                    class="mt-4 text-[#7e818c] text-sm border-b border-dashed hover:border-solid hover:border-black">
+                    Yana 57
+                </button>
+                <button id="hide-more-materials"
+                    class="mt-4 text-[#7e818c] text-sm border-b border-dashed hover:border-solid hover:border-black hidden">
+                    Yopish
+                </button>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="bg-white text-gray-800 font-sans">
+
+            <div class="max-w-[919px] mx-auto">
+                <h1 class="text-2xl font-bold mb-2">{{ category_display }}</h1>
+                <p class="text-gray-500 mb-4">60 965 ta tovar</p>
+
+                <div class="relative">
+                    <button id="leftBtn" onclick="scrollCarousel(-1)"
+                        class="absolute w-[30px] h-[35px] bg-[#7000FF] left-[10px] flex justify-center items-center top-[20px] -translate-y-1/2 right-0 bg-white p-2 rounded-full transition-opacity duration-300 opacity-100 z-10">
+                        <i class=" text-[#fff] fa-solid fa-chevron-left text-gray-700"></i>
+                    </button>
+
+                    <button id="rightBtn" onclick="scrollCarousel(1)"
+                        class="absolute bg-[#7000FF] top-1/2 -translate-y-1/2 right-0 bg-white p-2 rounded-full transition-opacity duration-300 opacity-100 z-10">
+                        <i class="w-[20px] h-[20px] text-[#fff] fa-solid fa-chevron-right text-gray-700"></i>
+                    </button>
+
+                    <div id="carousel"
+                        class="overflow-x-auto hide-scrollbar whitespace-nowrap flex space-x-3 px-10 scroll-smooth">
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Aksessuarlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Qoplamalar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Quloqchinlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Simsiz quloqchinlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Smartfonlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Smartfonlar Android</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Kompyuter aksessuarlari</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Planshetlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Smart soatlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Kameralar</span>
+                        </div>
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">USB kabellar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Powerbanklar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[12px] font-semibold">Printerlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Monitorlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+                            <span class="text-[13px] font-semibold">Proektorlar</span>
+                        </div>
+
+                        <div
+                            class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 gap-2">
+
+                            <span class="text-[13px] font-semibold">Bluetooth qurilmalar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ageCheck"
+                    class="mt-6 transition-opacity duration-500 ease-in-out border border-[#E5E7EB] rounded-xl p-6 flex gap-4 items-start">
+                    <div class="text-purple-700 text-xl font-bold">18+</div>
+                    <div class="flex-1">
+                        <p class="mb-1">Qidiruv natijalarida "kattalar uchun" mahsulotlar mavjud</p>
+                        <p class="mb-3">Ularni ko‘rsata olamiz: 18 yoshdan kattamisiz?</p>
+                        <div class="flex gap-3">
+                            <button
+                                class="border border-[#E5E7EB] text-gray-700 px-4  py-2 rounded-lg hover:bg-gray-300">Yo‘q</button>
+                            <button onclick="confirmAge()"
+                                class="bg-purple-700 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition">Ha,
+                                men 18 yoshdaman</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mt-[20px]">
+                    {% if narsalar %}
+                    <div class="container_large flex flex-wrap gap-5 mt-[21px]">
+                        {% for narsa in narsalar %}
+                        <a href="{% url 'detail' narsa.id %}"
+                            class="w-[232px] hover:shadow-xl relative rounded-t-xl overflow-hidden ease-linear duration-500 h-[522px]">
+                            <img src="{{ narsa.img.url }}" class="h-[313px] object-cover rounded-xl transform
+       transition-transform hover:rounded-b-none duration-500 hover:scale-105" alt="dsfsdf" width="230" height="309">
+                            <span
+                                class="w-[24px] h-[24px] bg-white absolute top-[5px] right-[5px] flex justify-center items-center rounded-full"><i
+                                    class="fa-regular fa-heart text-[14px]"></i></span>
+                            <div class="w-[224px] h-[38px] pl-[4px] top-[265px] absolute">
+                                <div class="flex mb-[4px]">
+                                    <span
+                                        class="flex justify-center items-center w-[60px] h-[18px] bg-[#fff] mr-[3px] rounded-full text-[10px]"><img
+                                            src="https://static.uzum.uz/market/badge-icons/verified.png" alt="dsdf"
+                                            width="12" height="12">{{ narsa.orginal }}</span>
+                                    <span
+                                        class="bg-[#ff4499] text-[#fff] text-[10px] px-[6px] py-[2px] rounded-full">Arzon
+                                        narx
+                                        kafolati</span>
+                                </div>
+                                <span class="bg-[#13be4c] text-[#fff] text-[10px] px-[6px] py-[2px] rounded-full">Super
+                                    narx</span>
+                            </div>
+                            <span class="block text-[#ff4499] font-semibold mt-[6px] text-[14px]">{{ narsa.skid_narhi }}</span>
+                            <span class="text-[11px] text-[#7e818c] text-line-through mr-[170px]">{{ narsa.asl_narhi }}</span>
+                            <span class="text-[11px] text-[#ff4499] ">Arzon narx kafolati</span>
+                            <span
+                                class="block bg-[#ffff00] w-[98px] h-[18px] text-[11px] flex justify-center items-center rounded-sm mt-[3px]">2
+                                336 so'm/oyiga</span>
+                            <div class="text-[11px] mt-[3px] h-[48px]">{{ narsa.tavsifi }}
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-left w-[224px] mt-[4px]">
+                                    <svg data-v-558ce626="" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" data-test-id="icon__rating-star"
+                                        class="ui-icon  rating-icon mr-[5px]">
+                                        <path
+                                            d="M6.32279 0.887954C6.11862 0.790604 5.88141 0.790604 5.67723 0.887954C5.50072 0.972112 5.4034 1.11823 5.35433 1.19839C5.30359 1.28126 5.25151 1.38682 5.20075 1.48972L4.12288 3.67336L1.71185 4.02577C1.59836 4.04233 1.48191 4.05933 1.38745 4.08204C1.29607 4.10402 1.12711 4.15154 0.992657 4.29346C0.837112 4.45765 0.76396 4.68325 0.793571 4.90747C0.819166 5.10129 0.928088 5.23891 0.989188 5.31033C1.05235 5.38415 1.13667 5.46625 1.21885 5.54626L2.96275 7.24481L2.55127 9.64395C2.53184 9.75707 2.51192 9.87312 2.50424 9.97001C2.49682 10.0637 2.48965 10.2392 2.583 10.411C2.69098 10.6098 2.88292 10.7492 3.10535 10.7905C3.29766 10.8261 3.4623 10.7651 3.54912 10.729C3.63889 10.6918 3.7431 10.637 3.84468 10.5835L6.00001 9.45005L8.15535 10.5835C8.25693 10.637 8.36114 10.6918 8.45091 10.729C8.53773 10.7651 8.70237 10.8261 8.89467 10.7905C9.11711 10.7492 9.30904 10.6098 9.41702 10.411C9.51037 10.2392 9.5032 10.0637 9.49578 9.97001C9.48811 9.87312 9.46818 9.75708 9.44876 9.64397L9.03727 7.24481L10.7812 5.54624C10.8634 5.46623 10.9477 5.38414 11.0108 5.31033C11.0719 5.23891 11.1809 5.10129 11.2065 4.90747C11.2361 4.68325 11.1629 4.45765 11.0074 4.29346C10.8729 4.15154 10.704 4.10402 10.6126 4.08204C10.5181 4.05933 10.4017 4.04233 10.2882 4.02577L7.87714 3.67336L6.7993 1.48976C6.74853 1.38686 6.69644 1.28127 6.6457 1.19839C6.59662 1.11823 6.4993 0.972112 6.32279 0.887954Z"
+                                            fill="#FFB54C"></path>
+                                    </svg>
+                                    <span class="text-[11px] text-[#7e818c]">5.0 ({{ narsa.sharhlar}})</span>
+                                </div>
+                                <button
+                                    class="block w-full h-[32px] bg-[#7000FF] text-[#fff] rounded-[8px] mt-[5px] hover:bg-[#7F4DFF]">Savatga</button>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>bundayi hali yoq</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ranglar
+    document.querySelectorAll('.circle').forEach(el => {
+        el.addEventListener('click', () => {
+            document.querySelectorAll('.circle').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            console.log("Tanlangan:", el.dataset.name);
+        });
+    });
+
+    const btn = document.getElementById('toggleBtn');
+    const extra = document.getElementById('extraColors');
+    btn.addEventListener('click', () => {
+        extra.classList.toggle('hidden');
+        btn.textContent = extra.classList.contains('hidden') ? "Yana ranglar" : "yopish";
+    });
+
+
+
+    // Tanlangan qurilma
+    const deviceList = document.getElementById("device-list");
+    const showMoreBtn = document.getElementById("show-more");
+    const hideMoreBtn = document.getElementById("hide-more");
+    const selectedDevice = document.getElementById("selected-device");
+
+    const extraDevices = Array.from({ length: 608 }, (_, i) => `Qurilma ${i + 1}`);
+
+    showMoreBtn.addEventListener("click", () => {
+        extraDevices.forEach(name => {
+            const label = document.createElement("label");
+            label.className = "flex items-center space-x-3";
+            label.innerHTML = `
+          <input type="radio" name="device" class="device-checkbox accent-[#7000FF]" value="${name}">
+          <span>${name}</span>
+        `;
+            deviceList.appendChild(label);
+        });
+        showMoreBtn.classList.add("hidden");
+        hideMoreBtn.classList.remove("hidden");
+    });
+
+    hideMoreBtn.addEventListener("click", () => {
+        const labels = deviceList.querySelectorAll("label");
+        labels.forEach((label, index) => {
+            if (index >= 6) deviceList.removeChild(label);
+        });
+        hideMoreBtn.classList.add("hidden");
+        showMoreBtn.classList.remove("hidden");
+    });
+
+    document.addEventListener("change", (e) => {
+        if (e.target.classList.contains("device-checkbox")) {
+            selectedDevice.textContent = `Tanlangan qurilma: ${e.target.value}`;
+        }
+    });
+
+
+
+    // brend
+    const brandList = document.getElementById("brand-list");
+    const expandBtn = document.getElementById("expand-brands");
+    const collapseBtn = document.getElementById("collapse-brands");
+    const selectedBrand = document.getElementById("selected-brand");
+
+    const extraBrands = Array.from({ length: 902 }, (_, i) => `Brend ${i + 1}`);
+
+    expandBtn.addEventListener("click", () => {
+        extraBrands.forEach(name => {
+            const label = document.createElement("label");
+            label.className =
+                "brand-item flex items-center gap-3";
+            label.innerHTML = `
+      <input type="radio" name="brand" class="brand-radio w-4 h-4 text-blue-600 accent-[#7000FF]" value="${name}">
+      <span class="text-sm font-medium text-gray-800">${name}</span>
+    `;
+            brandList.appendChild(label);
+        });
+        expandBtn.classList.add("hidden");
+        collapseBtn.classList.remove("hidden");
+    });
+
+    collapseBtn.addEventListener("click", () => {
+        const labels = brandList.querySelectorAll(".brand-item");
+        labels.forEach((label, index) => {
+            if (index >= 6) brandList.removeChild(label);
+        });
+        collapseBtn.classList.add("hidden");
+        expandBtn.classList.remove("hidden");
+    });
+
+    document.addEventListener("change", (e) => {
+        if (e.target.classList.contains("brand-radio")) {
+            selectedBrand.textContent = `Tanlangan brend: ${e.target.value}`;
+        }
+    });
+
+
+    // material
+
+
+    const materialList = document.getElementById("material-list");
+    const showMoreMaterialsBtn = document.getElementById("show-more-materials");
+    const hideMoreMaterialsBtn = document.getElementById("hide-more-materials");
+
+    const extraMaterials = Array.from({ length: 57 }, (_, i) => `Material ${i + 1}`);
+
+    showMoreMaterialsBtn.addEventListener("click", () => {
+        extraMaterials.forEach(name => {
+            const label = document.createElement("label");
+            label.className = "flex items-center gap-3";
+            label.innerHTML = `
+                <input type="radio" name="material" class="material-radio rounded-lg accent-[#7000FF]" value="${name}">
+                <span class="text-sm text-gray-800">${name}</span>
+            `;
+            materialList.appendChild(label);
+        });
+        showMoreMaterialsBtn.classList.add("hidden");
+        hideMoreMaterialsBtn.classList.remove("hidden");
+    });
+
+    hideMoreMaterialsBtn.addEventListener("click", () => {
+        const labels = materialList.querySelectorAll("label");
+        labels.forEach((label, index) => {
+            if (index >= 6) materialList.removeChild(label);
+        });
+        hideMoreMaterialsBtn.classList.add("hidden");
+        showMoreMaterialsBtn.classList.remove("hidden");
+    });
+
+
+
+
+    const carousel = document.getElementById("carousel");
+    const leftBtn = document.getElementById("leftBtn");
+    const rightBtn = document.getElementById("rightBtn");
+
+    function scrollCarousel(direction) {
+        const scrollAmount = 300;
+        carousel.scrollBy({
+            left: direction * scrollAmount,
+            behavior: "smooth",
+        });
+    }
+
+    function updateButtons() {
+        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+        const currentScroll = carousel.scrollLeft;
+
+        if (currentScroll <= 10) {
+            leftBtn.classList.add("opacity-0", "pointer-events-none");
+        } else {
+            leftBtn.classList.remove("opacity-0", "pointer-events-none");
+        }
+
+        if (currentScroll >= maxScrollLeft - 10) {
+            rightBtn.classList.add("opacity-0", "pointer-events-none");
+        } else {
+            rightBtn.classList.remove("opacity-0", "pointer-events-none");
+        }
+    }
+
+    carousel.addEventListener("scroll", updateButtons);
+    window.addEventListener("load", updateButtons);
+
+    function confirmAge() {
+        const box = document.getElementById("ageCheck");
+        box.classList.add("opacity-0");
+        setTimeout(() => {
+            box.style.display = "none";
+        }, 500);
+    }
+
+
+    const sliderFrom = document.getElementById("sliderFrom");
+    const sliderTo = document.getElementById("sliderTo");
+    const fromInput = document.getElementById("from");
+    const toInput = document.getElementById("to");
+    const differenceInput = document.getElementById("difference");
+
+    function update() {
+        let fromVal = Number(sliderFrom.value);
+        let toVal = Number(sliderTo.value);
+
+        if (fromVal > toVal) {
+            [fromVal, toVal] = [toVal, fromVal];
+        }
+
+        fromInput.value = fromVal;
+        toInput.value = toVal;
+        differenceInput.value = toVal - fromVal;
+    }
+
+    sliderFrom.addEventListener("input", update);
+    sliderTo.addEventListener("input", update);
+
+    update();
+
+
+
+
+</script>
+<script>
+    document.title = "Hafta tovarlar";
+  </script>
+{% endblock %}

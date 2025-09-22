@@ -1,0 +1,245 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+{% block content %}
+<header
+    class="w-full py-[14px] bg-[rgba(26,26,26,0.5)] transition-colors duration-500 backdrop-blur-md fixed top-0 z-50">
+    <nav class="w-[1190px] flex justify-between items-center mx-auto">
+        <a href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="114" height="36" fill="none" viewBox="0 0 114 36"
+                class="layout__header-logo" data-v-c5e31979="">
+                <path fill="#ABABAB"
+                    d="M18.035 35.815c9.772 0 17.695-7.973 17.695-17.807S27.807.202 18.035.202.34 8.174.34 18.008s7.922 17.807 17.695 17.807">
+                </path>
+                <path fill="#3B1082"
+                    d="M5.008 20.175c-.716-4.087-1.074-6.13-.593-7.84A7.76 7.76 0 0 1 7.327 8.15c1.432-1.039 3.463-1.4 7.524-2.12l1.99-.353c4.06-.72 6.091-1.08 7.79-.597a7.7 7.7 0 0 1 4.159 2.93c1.032 1.441 1.39 3.485 2.107 7.572.716 4.086 1.074 6.13.593 7.84a7.76 7.76 0 0 1-2.912 4.185c-1.432 1.039-3.463 1.399-7.524 2.12l-1.99.352c-4.06.721-6.091 1.081-7.79.598a7.7 7.7 0 0 1-4.159-2.93c-1.032-1.442-1.39-3.485-2.107-7.572">
+                </path>
+                <path fill="#fff"
+                    d="M22.933 12.375c.534.118 1.05.22 1.557.35.54.138 1.073.305 1.607.456.075.022.105.051.105.138-.003 1.678.015 3.358-.007 5.036a8.05 8.05 0 0 1-1.68 4.869c-1.215 1.599-2.804 2.629-4.748 3.097a7.9 7.9 0 0 1-2.333.2c-1.868-.111-3.524-.774-4.939-2.004-1.46-1.264-2.38-2.855-2.75-4.762A8.6 8.6 0 0 1 9.6 18.11c-.003-1.59 0-3.176-.005-4.765 0-.106.034-.143.13-.173a25 25 0 0 1 3.107-.778c.01-.003.02 0 .044-.003v.123c0 1.994-.008 3.99.005 5.983.007 1.005.142 1.998.482 2.952.27.756.668 1.431 1.263 1.978.559.51 1.212.833 1.945.99 1.035.225 2.069.208 3.085-.115 1.2-.38 2.032-1.183 2.566-2.314.286-.603.457-1.244.565-1.902.12-.732.15-1.47.15-2.21v-5.34c-.003-.046-.003-.09-.003-.162">
+                </path>
+                <path fill="#fff"
+                    d="M19.358 16.07H16.44V9.205c.304-.096 2.339-.104 2.917-.008zm56.981-5.497c0 1.56-.876 2.28-2.18 2.28s-2.15-.71-2.15-2.28V5.421h-2.814v5.248c0 3.42 2.845 4.762 4.979 4.762s4.983-1.342 4.983-4.761V5.42h-2.813zm-9.516-2.761v-2.39h-9.137v2.39h5.407l-5.628 5.046v2.391h9.695v-2.391h-5.955zm26.414-2.579c-1.782 0-3.126.73-3.79 1.84-.68-1.11-2.15-1.84-3.68-1.84-3.006 0-4.572 1.925-4.572 4.306v5.71h2.815V9.945c0-1.14.593-2.138 1.958-2.138a1.98 1.98 0 0 1 1.51.578c.196.197.347.435.448.698.096.264.14.542.12.821v5.35h2.815v-5.35c0-1.14.67-2.102 2.018-2.102 1.35 0 2 1.003 2 2.138v5.303h2.813V9.55c0-2.38-1.45-4.305-4.475-4.305zm-40.317 5.34c0 1.56-.875 2.28-2.169 2.28s-2.16-.71-2.16-2.28V5.421h-2.814v5.248c0 3.42 2.835 4.762 4.98 4.762 2.149 0 4.973-1.342 4.973-4.761V5.42h-2.814zm7.498 16.173c0 1.093.583 2.177 2.43 2.177 1.694 0 1.939-.996 1.939-.996h3.175s-.297 3.203-5.11 3.203c-3.357 0-5.47-1.848-5.47-5.149 0-3.29 2.113-5.128 5.429-5.128 3.284 0 5.386 1.838 5.386 5.128 0 .37-.053.765-.053.765zm.041-1.735h4.662c0-.79-.47-1.935-2.315-1.935-1.81 0-2.347 1.14-2.347 1.935m23.701 1.735c0 1.093.584 2.177 2.43 2.177 1.694 0 1.939-.996 1.939-.996h3.175s-.297 3.203-5.11 3.203c-3.357 0-5.469-1.848-5.469-5.149 0-3.29 2.112-5.128 5.428-5.128 3.284 0 5.386 1.838 5.386 5.128 0 .37-.052.765-.052.765zm.041-1.735h4.661c0-.79-.469-1.935-2.315-1.935-1.803 0-2.346 1.14-2.346 1.935m-28.413-.986c0-2.156-1.632-3.25-4.917-3.245-2.263 0-4.896.611-4.896 2.993 0 1.263.767 2.259 1.888 2.598 1.163.349 2.325.523 3.52.61.661.052 1.897.242 1.897.965-.01.673-.777 1.006-2.283 1.006-1.57 0-2.248-.338-2.248-1.242v-.303h-2.972v.303c0 2.238 1.726 3.352 5.214 3.352 3.499.01 5.266-1.042 5.266-3.141 0-1.587-1.152-2.552-2.58-2.829-1.388-.282-2.827-.313-3.979-.61-.5-.134-.756-.406-.756-.688 0-.601.61-.904 1.867-.904 1.235 0 2.013.17 2.013 1.134zm56.905 0c0-2.156-1.632-3.25-4.917-3.245-2.263 0-4.896.611-4.896 2.993 0 1.263.767 2.259 1.888 2.598 1.162.349 2.325.523 3.519.61.662.052 1.898.242 1.898.965-.011.673-.777 1.006-2.284 1.006-1.569 0-2.247-.338-2.247-1.242v-.303h-2.966v.303c0 2.238 1.725 3.352 5.213 3.352 3.499.01 5.266-1.042 5.266-3.141 0-1.587-1.152-2.552-2.581-2.829-1.386-.282-2.825-.313-3.978-.61-.5-.129-.756-.401-.756-.683 0-.6.61-.904 1.867-.904 1.236 0 2.012.17 2.012 1.135h2.962zm-18.798.312v6.504h2.888v-4.363c0-1.679 1.246-2.762 2.815-2.762h1.888v-2.941h-1.418c-1.747 0-3.009 1.463-3.285 2.32v-2.12h-2.889zM73.498 17.12h-2.889v13.721h2.889zm5.668 0h-2.889v13.721h2.889z">
+                </path>
+            </svg>
+        </a>
+        <div class="flex items-center space-x-2 text-white">
+            <a class=" text-[14px] tracking-[0.5px] font-[500] px-[10px] py-[6px] bg-[#ffffff4c] rounded-[8px]"
+                href="#">Sotuvchi yo'riqnomasi</a>
+            <a class="flex items-center gap-[5px] px-[10px] py-[6px] bg-[#ffffff4c] rounded-[8px]" href="#"><svg
+                    class="w-[16px] h-[16px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M21.5422 15C20.2679 19.0571 16.4776 22 12 22C7.52232 22 3.73203 19.0571 2.45776 15H21.5422Z"
+                        fill="#1EB53A"></path>
+                    <path d="M21.5422 9H2.45776C3.73203 4.94289 7.52232 2 12 2C16.4776 2 20.2679 4.94289 21.5422 9Z"
+                        fill="#0099B5"></path>
+                    <path
+                        d="M21.1679 8C21.3097 8.32471 21.4349 8.6584 21.5422 9H2.45776C2.56505 8.6584 2.69018 8.32471 2.83205 8H21.1679Z"
+                        fill="#CE1126"></path>
+                    <path
+                        d="M21.1679 16C21.3097 15.6753 21.4349 15.3416 21.5422 15H2.45776C2.56505 15.3416 2.69018 15.6753 2.83205 16H21.1679Z"
+                        fill="#CE1126"></path>
+                    <path
+                        d="M21.3704 15.5C21.7775 14.4107 22 13.2313 22 12C22 10.7687 21.7775 9.58934 21.3704 8.5H2.62961C2.22255 9.58934 2 10.7687 2 12C2 13.2313 2.22255 14.4107 2.62961 15.5H21.3704Z"
+                        fill="#F7F9FC"></path>
+
+                </svg> <span class="text-[14px] font-[500]">UZ</span> <i
+                    class="fa-solid fa-chevron-down text-[10px]"></i></a>
+            <a class=" text-[14px] font-[500] px-[10px] py-[6px] bg-[#ffffff4c] rounded-[8px]" href="#">Kirish</a>
+            <a class="text-black text-[14px] font-[500] px-[10px] py-[6px] bg-[#ffffff] rounded-[8px]" href="#">Sotuvchi
+                bo'lish</a>
+        </div>
+    </nav>
+</header>
+<div class="overflow-hidden">
+    <div class="bg-[#1f2026] relative">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1378" height="862" fill="none" viewBox="0 0 1378 862"
+            data-v-d788d48a="">
+            <path fill="#fff" fill-opacity=".04" fill-rule="evenodd"
+                d="m920.215-509.532-52.552 18.148c-54.474 18.812-92.276 31.909-120.936 44.387-28.095 12.232-43.021 22.086-53.266 32.287-25.045 24.937-40.971 57.667-45.15 92.882-1.713 14.432-.257 32.35 7.434 62.123 7.844 30.363 20.83 68.335 39.58 122.986 18.75 54.65 31.811 92.596 44.256 121.37 12.205 28.216 22.046 43.226 32.237 53.53 24.877 25.152 57.477 41.098 92.485 45.283 14.314 1.71 32.113.263 61.761-7.446 30.242-7.863 68.069-20.884 122.546-39.696l52.55-18.149c54.47-18.812 92.28-31.908 120.94-44.386 28.09-12.232 43.02-22.086 53.26-32.287 25.05-24.937 40.97-57.667 45.15-92.882 1.72-14.433.26-32.35-7.43-62.124-7.85-30.363-20.83-68.335-39.58-122.985s-31.81-92.597-44.26-121.37c-12.2-28.216-22.04-43.227-32.23-53.531-24.88-25.152-57.48-41.098-92.49-45.282-14.31-1.711-32.11-.264-61.76 7.445-30.24 7.863-68.07 20.884-122.545 39.697M592.828-328.383c-5.744 48.399 12.721 102.22 49.651 209.861s55.396 161.461 89.616 196.059c33.737 34.11 77.982 55.768 125.54 61.452 48.239 5.766 101.88-12.758 209.165-49.807l52.55-18.148c107.28-37.05 160.92-55.574 195.4-89.906 34-33.848 55.58-78.239 61.25-125.956 5.74-48.399-12.73-102.219-49.66-209.86s-55.39-161.462-89.61-196.06c-33.74-34.11-77.98-55.767-125.54-61.452-48.24-5.766-101.88 12.759-209.163 49.807l-52.553 18.149c-107.282 37.049-160.923 55.573-195.404 89.905-33.995 33.848-55.579 78.239-61.242 125.956"
+                clip-rule="evenodd"></path>
+            <path fill="#fff" fill-opacity=".04" d="M120.375-248.034 1170.01 587.433l32.47-40.791L152.842-288.825z">
+            </path>
+            <path fill="#fff" fill-opacity=".04" fill-rule="evenodd"
+                d="M41.636 591.266C10.386 481.833-5.24 427.117 3.028 379.084c8.15-47.357 32.025-90.558 67.742-122.581 36.228-32.48 90.762-48.17 199.83-79.55l53.428-15.372c109.067-31.38 163.601-47.07 211.47-38.785 47.194 8.168 90.244 32.115 122.15 67.947 32.362 36.344 47.987 91.06 79.237 200.491s46.874 164.149 38.607 212.183c-8.15 47.357-32.025 90.558-67.742 122.58-36.228 32.481-90.762 48.171-199.83 79.551l-53.427 15.371c-109.067 31.38-163.602 47.07-211.471 38.786-47.194-8.169-90.243-32.115-122.149-67.947-32.363-36.344-47.988-91.06-79.237-200.492m244.363-360.57 53.427-15.372c55.382-15.934 93.836-26.956 124.447-33.225 30.009-6.146 47.859-6.659 62.064-4.2 34.739 6.012 66.459 23.644 89.986 50.066 9.638 10.824 18.68 26.33 29.392 55.148 10.923 29.387 21.981 67.967 37.847 123.527s26.848 94.161 33.093 124.895c6.124 30.136 6.641 48.106 4.176 62.43-6.016 34.949-23.63 66.801-49.944 90.393-10.764 9.651-26.185 18.71-54.879 29.454-29.272 10.96-67.705 22.059-123.086 37.993l-53.428 15.372c-55.381 15.934-93.836 26.956-124.447 33.225-30.009 6.145-47.858 6.659-62.063 4.2-34.74-6.012-66.46-23.645-89.987-50.066-9.638-10.824-18.68-26.331-29.392-55.149-10.923-29.386-21.981-67.966-37.847-123.526S68.51 481.7 62.266 450.966c-6.124-30.137-6.641-48.107-4.176-62.43 6.015-34.95 23.63-66.802 49.943-90.394 10.765-9.65 26.185-18.709 54.88-29.453 29.272-10.961 67.705-22.06 123.086-37.993"
+                clip-rule="evenodd"></path>
+        </svg>
+        <div class="contenir_mein">
+            <div class="w-[606px] text-white absolute top-[145px]">
+                <div class="w-[513px] mb-[16px] tracking-[1px]">
+                    <span class=" text-[36px] font-bold leading-[44px]">
+                        Uzum Marketda butun Oʻzbekiston boʻylab soting!
+
+                    </span>
+                </div>
+                <span class="text-[20px]">Minglab sotuvchilar allaqachon biz bilan. Qoʻshiling va butun mamlakat boʻylab
+                    millionlab mijozlarga
+                    soting</span>
+                <div class="mt-[48px] flex gap-[30px]">
+                    <div class="w-[147px]">
+                        <span class="text-[28px] font-bold tracking-[1px]">10 million</span>
+                        <span class="text-[14px] text-[#ffffffb3] leading-[18px]">xaridor Uzum Marketda roʻyxatdan
+                            oʻtgan</span>
+                    </div>
+                    <div class="w-[160px]">
+                        <span class="text-[28px] font-bold tracking-[1px]">X23 oʻsish</span>
+                        <span class="text-[14px] text-[#ffffffb3] leading-[18px]">marketpleysdagi savdo oʻtgan yil
+                            davomida</span>
+                    </div>
+                    <div class="w-[200px]">
+                        <span class="text-[28px] font-bold tracking-[1px]">14 kun <br></span>
+                        <span class="text-[14px] text-[#ffffffb3] leading-[18px]">Roʻyxatdan oʻtgandan soʻng birinchi
+                            daromadning o'rtacha vaqti</span>
+                    </div>
+                </div>
+                <a class="text-[#1f2026] inline-block font-[600] px-[50px] py-[14px] bg-[#ffffff] mt-[70px] rounded-[10px]"
+                    href="#">Sotuvchi bo'lish</a>
+            </div>
+            <div class="overflow-x-hidden">
+                <img class="w-[998px] object-cover h-[833px] rounded-tl-[24px] rounded-bl-[24px] z-10 absolute top-[145px] right-[-440px]"
+                    src="https://seller.uzum.uz/_nuxt/first-uz.RJHhsVWQ.png" alt="man">
+
+            </div>
+        </div>
+    </div>
+    <div class="contenir_mein">
+        <div
+            class="w-[1190px] h-[607px] bg-[#ceccff] rounded-[24px] pt-[44px] px-[44px] pb-[56px] z-20 relative top-[-125px]">
+            <div class="w-[587px] mb-[12px]">
+                <span class="text-[36px] text-[#1f2026] font-bold">Uzum Marketda sotish <span class="bg-[#fefd35]">—
+                        oson!</span></span>
+
+
+            </div>
+            <span class="text-[18px] leading-[28px] font-[500]">Biznesni samaraliroq yuritishga yordam beradigan
+                bonus va xizmatlarni taklif qilamiz</span>
+            <div class="mt-[36px] flex justify-between items-center">
+                <div class="w-[280px]">
+                    <div class="w-[56px] h-[58px] flex items-center justify-center bg-[#ffffff] rounded-[12px]">
+                        <svg class="w-[32px] h-[32px]" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 24 24" data-v-c6c37359="">
+                            <path fill-rule="evenodd"
+                                d="M19.12 1.26a.75.75 0 0 1 .55.405l.889 1.776 1.776.888a.75.75 0 0 1 .195 1.201l-3 3a.75.75 0 0 1-.53.22h-2.69l-3.78 3.78a.75.75 0 0 1-1.06-1.06l3.78-3.78V5a.75.75 0 0 1 .22-.53l3-3a.75.75 0 0 1 .65-.21Zm-2.37 5.99h1.94l2.044-2.045-1.07-.534a.75.75 0 0 1-.335-.336l-.535-1.069-2.044 2.045V7.25ZM12 2.75A9.25 9.25 0 1 0 21.25 12a.75.75 0 0 1 1.5 0c0 5.937-4.813 10.75-10.75 10.75S1.25 17.937 1.25 12 6.063 1.25 12 1.25a.75.75 0 0 1 0 1.5Zm0 5A4.25 4.25 0 1 0 16.25 12a.75.75 0 0 1 1.5 0A5.75 5.75 0 1 1 12 6.25a.75.75 0 0 1 0 1.5Z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <p class="text-[18px] font-bold leading-[22px] mt-[20px] mb-[4px]">Mijozlarni jalb qilamiz</p>
+                    <p class="text-[#1f2026] font-[400] leading-[20px]">Reklama xarajatlarini unuting – Uzum
+                        Marketda xaridorlar allaqachon tovaringizni qidirmoqda</p>
+                </div>
+                <div class="w-[280px]">
+                    <div class="w-[56px] h-[58px] flex items-center justify-center bg-[#ffffff] rounded-[12px]">
+                        <svg class="w-[32px] h-[32px]" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 24 24" data-v-c6c37359="">
+                            <path fill-rule="evenodd"
+                                d="M3 2.25a.75.75 0 0 1 .75.75v16.4c0 .292 0 .467.011.596a.625.625 0 0 0 .018.12.25.25 0 0 0 .104.105.638.638 0 0 0 .121.018c.13.01.304.011.596.011H21a.75.75 0 0 1 0 1.5H4.574c-.258 0-.494 0-.692-.016a1.775 1.775 0 0 1-.676-.175 1.75 1.75 0 0 1-.765-.765 1.774 1.774 0 0 1-.175-.676 9.053 9.053 0 0 1-.016-.692V3A.75.75 0 0 1 3 2.25Zm.88 17.97h.002-.001Zm-.1-.1v-.002.001ZM16.25 7a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V8.81l-4.168 4.169c-.087.086-.18.18-.268.255a1.26 1.26 0 0 1-.428.248 1.25 1.25 0 0 1-.772 0 1.26 1.26 0 0 1-.428-.248 4.746 4.746 0 0 1-.268-.255l-1.883-1.883-.035-.035-.035.035L7.53 15.53a.75.75 0 0 1-1.06-1.06l4.448-4.449c.087-.086.18-.18.268-.254.1-.085.239-.187.428-.249a1.25 1.25 0 0 1 .772 0c.189.062.329.164.428.249.088.074.181.168.268.254l.014.014 1.869 1.869.035.035.035-.035L19.19 7.75H17a.75.75 0 0 1-.75-.75Z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <p class="text-[18px] font-bold leading-[22px] mt-[20px] mb-[4px]">Targʻibotda yordam beramiz
+                    </p>
+                    <p class="text-[#1f2026] font-[400] leading-[20px]">Aksiyalar, chegirmalar, joylashtirish Topda
+                        — tovarlaringizni koʻrinarliroq va daromadliroq qilamiz</p>
+                </div>
+                <div class="w-[280px]">
+                    <div class="w-[56px] h-[58px] flex items-center justify-center bg-[#ffffff] rounded-[12px]">
+                        <svg class="w-[32px] h-[32px]" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 24 24" data-v-c6c37359="">
+                            <path fill-rule="evenodd"
+                                d="M10 3.75a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5ZM4.75 7.5a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0ZM19 14.25a.75.75 0 0 1 .75.75v2.25H22a.75.75 0 1 1 0 1.5h-2.25V21a.75.75 0 1 1-1.5 0v-2.25H16a.75.75 0 0 1 0-1.5h2.25V15a.75.75 0 0 1 .75-.75Zm-11.643.5H12a.75.75 0 1 1 0 1.5H7.5c-1.45 0-2.009.008-2.443.14a3.25 3.25 0 0 0-2.167 2.167c-.132.434-.14.993-.14 2.443a.75.75 0 0 1-1.5 0v-.143c0-1.258 0-2.06.205-2.736a4.75 4.75 0 0 1 3.166-3.166c.676-.206 1.478-.205 2.736-.205Z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <p class="text-[18px] font-bold leading-[22px] mt-[20px] mb-[4px]">Auditoriyani kengaytiramiz
+                    </p>
+                    <p class="text-[#1f2026] font-[400] leading-[20px]">Xaridorlar uchun tovaringiz xaridini
+                        qulayroq boʻlishi uchun nasiya va kreditlar</p>
+                </div>
+            </div>
+            <div class="mt-[36px] flex justify-between items-center">
+                <div class="w-[280px]">
+                    <div class="w-[56px] h-[58px] flex items-center justify-center bg-[#ffffff] rounded-[12px]">
+                        <svg class="w-[32px] h-[32px]" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 24 24" data-v-c6c37359="">
+                            <path fill-rule="evenodd"
+                                d="M5.17 3.25h5.66c.535 0 .98 0 1.345.03.38.03.736.098 1.073.27a2.75 2.75 0 0 1 1.202 1.202c.162.316.23.65.264 1.003.014.152.023.317.028.495h1.595c.306 0 .608.032.909.156.3.125.537.316.753.532l4.063 4.063c.216.216.407.452.532.753.124.3.156.603.156.909v2.859c0 .214 0 .41-.011.576-.012.178-.04.373-.122.572a1.75 1.75 0 0 1-1.375 1.061 3.25 3.25 0 0 1-6.483.019h-4.084a3.751 3.751 0 0 1-7.367-.088A2.751 2.751 0 0 1 1.25 15V7.17c0-.535 0-.98.03-1.345.03-.38.098-.736.27-1.073A2.75 2.75 0 0 1 2.752 3.55c.337-.172.693-.24 1.073-.27.365-.03.81-.03 1.345-.03ZM3.365 16.077a3.752 3.752 0 0 1 7.31.173h2.575v-2.562c.001-2.23.002-4.458 0-6.687 0-.502-.004-.842-.03-1.104-.023-.253-.063-.38-.106-.464a1.25 1.25 0 0 0-.546-.547c-.091-.046-.228-.088-.515-.111-.296-.024-.68-.025-1.253-.025H5.2c-.572 0-.957 0-1.253.025-.287.023-.424.065-.514.111a1.25 1.25 0 0 0-.547.547c-.046.09-.088.227-.111.514-.024.296-.025.68-.025 1.253V15c0 .458.247.86.615 1.077Zm11.385.173H15a3.25 3.25 0 0 1 6 0 .37.37 0 0 0 .096-.019.25.25 0 0 0 .134-.132.632.632 0 0 0 .012-.103c.008-.108.008-.253.008-.496v-2.837c0-.204-.023-.287-.042-.335-.02-.047-.063-.122-.207-.266l-4.063-4.063c-.144-.144-.219-.187-.266-.207-.047-.02-.13-.042-.335-.042h-1.586a7348.78 7348.78 0 0 1-.001 8.5ZM7 14.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm11 1a1.75 1.75 0 1 0 0 3.502 1.75 1.75 0 0 0 0-3.502Z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <p class="text-[18px] font-bold leading-[22px] mt-[20px] mb-[4px]">Ishlayapmiz butun mamlakat
+                        boʻylab</p>
+                    <p class="text-[#1f2026] font-[400] leading-[20px]">Uzum Market qamrov hududi 200 ta shaharni
+                        tashkil etadi va bu hali hammasi emas.</p>
+                </div>
+                <div class="w-[280px]">
+                    <div class="w-[56px] h-[58px] flex items-center justify-center bg-[#ffffff] rounded-[12px]">
+                        <svg class="w-[32px] h-[32px]" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 24 24" data-v-c6c37359="">
+                            <path fill-rule="evenodd"
+                                d="M11.854 3.074a7.33 7.33 0 0 0-.376.282L4.696 8.631c-.487.379-.613.485-.701.604a1.25 1.25 0 0 0-.199.406c-.04.142-.046.307-.046.924V17.8c0 .572 0 .957.025 1.252.023.288.065.425.111.515.12.236.311.427.547.547.09.046.227.088.514.111.296.024.68.025 1.253.025h11.6c.572 0 .957 0 1.252-.025.288-.023.425-.065.515-.111a1.25 1.25 0 0 0 .547-.547c.046-.09.088-.227.111-.515.024-.295.025-.68.025-1.252v-7.235c0-.617-.006-.782-.046-.924a1.248 1.248 0 0 0-.199-.406c-.088-.119-.214-.225-.7-.604l-6.783-5.275a7.418 7.418 0 0 0-.376-.282c-.106-.071-.192-.067-.292 0Zm.603-1.496c.346.093.64.323.915.539l.07.055 6.783 5.275.068.053c.387.3.692.537.918.843.199.269.347.572.437.894.103.366.102.752.102 1.242v7.351c0 .535 0 .98-.03 1.345-.03.38-.098.736-.27 1.073a2.751 2.751 0 0 1-1.201 1.202c-.338.172-.694.24-1.074.27-.364.03-.81.03-1.345.03H6.17c-.535 0-.98 0-1.345-.03-.38-.03-.736-.098-1.073-.27a2.75 2.75 0 0 1-1.202-1.2c-.172-.338-.24-.694-.27-1.074-.03-.365-.03-.81-.03-1.345V10.48c0-.49 0-.876.102-1.242a2.75 2.75 0 0 1 .437-.894c.226-.306.53-.542.918-.843l.068-.053 6.782-5.275.071-.055c.276-.216.57-.446.915-.54.3-.08.615-.08.914 0ZM9.25 9a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 .75.75v3.25H16a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-.75.75H8a.75.75 0 0 1-.75-.75v-4a.75.75 0 0 1 .75-.75h1.25V9Zm1.5 3.25h2.5v-2.5h-2.5v2.5Zm-2 1.5v2.5h2.5v-2.5h-2.5Zm4 0v2.5h2.5v-2.5h-2.5Z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <p class="text-[18px] font-bold leading-[22px] mt-[20px] mb-[4px]">Bizning omborlar</p>
+                    <p class="text-[#1f2026] font-[400] leading-[20px]">112 000 m² dan ortiq zamonaviy ombor - hamma
+                        narsa sigʻadi</p>
+                </div>
+                <div class="w-[280px]">
+                    <div class="w-[56px] h-[58px] flex items-center justify-center bg-[#ffffff] rounded-[12px]">
+                        <svg class="w-[32px] h-[32px]" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 24 24" data-v-c6c37359="">
+                            <path fill-rule="evenodd"
+                                d="M12 2.75a.934.934 0 0 0-.95.917v7.222a.75.75 0 0 1-1.5 0V4.778a.934.934 0 0 0-.95-.917.934.934 0 0 0-.95.917v9.444a.75.75 0 0 1-1.5 0v-2.778a.934.934 0 0 0-.95-.916.934.934 0 0 0-.95.916v2.223c0 4.174 3.456 7.583 7.75 7.583 4.294 0 7.75-3.41 7.75-7.583V8.11a.934.934 0 0 0-.95-.917.934.934 0 0 0-.95.917v2.778a.75.75 0 0 1-1.5 0v-6.11a.934.934 0 0 0-.95-.917.934.934 0 0 0-.95.917v6.11a.75.75 0 0 1-1.5 0v-7.22A.934.934 0 0 0 12 2.75Zm2.227-.094A2.456 2.456 0 0 0 12 1.25c-.98 0-1.837.571-2.227 1.406A2.468 2.468 0 0 0 8.6 2.361c-1.339 0-2.45 1.068-2.45 2.417v4.439a2.471 2.471 0 0 0-.95-.19c-1.339 0-2.45 1.069-2.45 2.417v2.223c0 5.03 4.155 9.083 9.25 9.083s9.25-4.053 9.25-9.083V8.11c0-1.349-1.111-2.417-2.45-2.417-.336 0-.657.068-.95.19V4.777c0-1.349-1.111-2.417-2.45-2.417a2.47 2.47 0 0 0-1.173.295Z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <p class="text-[18px] font-bold leading-[22px] mt-[20px] mb-[4px]">Tayyorlashda yordam</p>
+                    <p class="text-[#1f2026] font-[400] leading-[20px]">Muhim narsalarga vaqtingizni tejash uchun
+                        suratga olamiz va qadoqlaymiz</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenir_mein mt-[44px]">
+        <div class="flex items-center justify-between">
+            <img class="w-[429px] h-[500px] rounded-[16px] object-cover"
+                src="https://seller.uzum.uz/_nuxt/second.B3RCPCpy.png" alt="people">
+            <div class="w-[428px]">
+                <div class="w-[390px]">
+                    <span class="text-[36px] text-[#1f2026] font-bold">Nimadan boshlash va biznesni qanday qilib
+                        samaraliroq qilish kerak</span>
+                </div>
+                <div class="w-[428px] mt-[16px] mb-[50px]">
+
+                    <span class="text-[18px] text-[#1f2026] leading-[28px] font-[500]">Uzum Academy yordam beradi!
+                        Top sotuvchilardan tajribali ma’ruzachilar va Uzum
+                        ekspertlari, real holatlar, biznes jamiyat va juda koʻp foydali bilimlar — biznesingiz
+                        rivojlanishiga yordam beradigan hamma narsa</span>
+                </div>
+                <a class="py-[14px] px-[18px] bg-[#1f2026] rounded-[12px] text-white" href="#">Batafsil ma’lumot
+                    olish</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div>
+    <div class="contenir_mein">
+        <div class="w-[428px] mt-[110px]">
+            <span>Istalgan joydan ishlang</span>
+            <span>Biznesingizni masofadan boshqaring — sotuvchilar uchun qulay veb-sayt yoki mobil ilova
+                orqali</span>
+            <a class="text-[#ffffff] inline-block font-[600] px-[20px] py-[10px] bg-[#7000ff] mt-[70px] rounded-[10px]"
+                href="#">Sotuvchi bo'lish</a>
+        </div>
+    </div>
+    <div class="overflow-hidden">
+        <img class="w-[237px] h-[481px] object-cover " src="https://seller.uzum.uz/_nuxt/iphone-uz.BUK7saXJ.png"
+            alt="phone">
+        <img class="w-[1044px] h-[616px] object-cover" src="https://seller.uzum.uz/_nuxt/laptop-uz.UTMAuBIY.png"
+            alt="tablet">
+    </div>
+</div> -->
+
+</div>
+
+{% endblock %}

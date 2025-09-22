@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<title>{{ narsalar.tavsifi }}</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+    }
+
+    swiper-container {
+        width: 1240px;
+        height: 413px;
+        border-radius: 10px;
+        margin-top: 10px;
+        border-radius: 40px;
+
+    }
+
+    swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        border-radius: 40px;
+    }
+
+    swiper-slide img {
+        display: block;
+        width: 1240px;
+        height: 413px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 20px;
+        border-bottom-left-radius: 20px;
+
+    }
+
+    @media screen and (max-width: 1240px) {
+        .media {
+            display: none;
+        }
+        swiper-container {
+            margin-top: 10px;
+            width: 100%;
+            height: 193px;
+        }
+    }
+</style>
+<swiper-container class="mySwiper container_large" pagination="true" pagination-clickable="true" navigation="true"
+    space-between="30" centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+    
+    {% for item in caruselimg %}
+    <swiper-slide><img src="{{ item.img.url }}" alt=""></swiper-slide>
+  {% endfor %}
+  
+</swiper-container>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+<div class="media">
+
+    <div class="container_large mt-4 flex justify-between">
+        <div class="w-[301px] h-[60px] bg-[#efefef] hover:bg-[#DEE0E5] flex justify-center rounded-xl items-center">
+            <img src="https://static.uzum.uz/static/promo_images/756b6f56-9d2d-414c-a9d3-37d40d1c808b" alt="baby" width="40"
+                height="40">
+            <span class="ml-[10px] text-[14px]">{% trans "Onalar va bolalar uchun" %}</span>
+        </div>
+        <div class="w-[301px] h-[60px] bg-[#efefef] hover:bg-[#DEE0E5] flex justify-center rounded-xl items-center">
+            <img src="https://static.uzum.uz/static/promo_images/a266cae1-db3a-4b40-a984-cf9220d9b2e8" alt="baby" width="40"
+                height="40">
+            <span class="ml-[10px] text-[14px]">{% trans "Arzon narxlar kafolati" %}</span>
+        </div>
+        <div class="w-[301px] h-[60px] bg-[#efefef] hover:bg-[#DEE0E5] flex justify-center rounded-xl items-center">
+            <img src="https://static.uzum.uz/static/promo_images/66eaead4-ce8b-45b2-8691-592ced656ccf" alt="baby" width="40"
+                height="40">
+            <span class="ml-[10px] text-[14px]">{% trans "Zamonaviy Bozor" %}</span>
+        </div>
+        <a href="{% url 'narsalar_list' 'elektronika' %}">
+        <div class="w-[301px] h-[60px] bg-[#efefef] hover:bg-[#DEE0E5] flex justify-center rounded-xl items-center">
+            <img src="https://static.uzum.uz/static/promo_images/a98e3eef-162f-47b1-b8d8-f6253393bd95" alt="baby" width="40"
+                height="40">
+            <span class="ml-[10px] text-[14px]">{% trans "Hafta tovarlar" %}</span>
+        </div>
+        </a>
+    </div>
+</div>
+
+
+
+<div class="container_large mt-[48px]">
+    <div class="w-[140px] flex justify-between items-center">
+        <h2 class="text-[28px] font-semibold">{% trans "Mashhur" %}</h2>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+</div>
+
+
+<div class="container_large flex flex-wrap gap-5 mt-[21px]">
+    {% for narsalar in narsalar %}
+    <div class="w-[232px] h-[522px] hover:shadow-xl ease-linear duration-500 p-[4px]" data-id="{{ narsalar.id }}">
+        <div class="w-[232px] relative rounded-t-xl overflow-hidden h-[522px]">
+            <a href="{% url 'detail' detail_id=narsalar.id %}">
+                <img src="{{ narsalar.img.url }}" class="h-[313px] object-cover rounded-xl transform
+                transition-transform hover:rounded-b-none duration-500 hover:scale-105" alt="dsfsdf" width="230"
+                    height="309">
+            </a>
+            <span
+                class="wishlist-toggle cursor-pointer w-[24px] h-[24px] bg-white absolute top-[5px] right-[5px] flex justify-center items-center rounded-full"><i
+                    class="fa-regular fa-heart text-[14px]"></i></span>
+            <div class="w-[224px] h-[38px] pl-[4px] top-[265px] absolute">
+                <div class="flex mb-[4px]">
+                    {% if narsalar.original %}
+                    <span class="flex justify-center items-center w-[60px] h-[18px] bg-[#fff] mr-[3px] rounded-full text-[10px]">
+                        <img src="https://static.uzum.uz/market/badge-icons/verified.png" alt="original" width="12" height="12">
+                        Original
+                    </span>
+                    <span class="bg-[#ff4499] text-[#fff] text-[10px] px-[6px] py-[2px] rounded-full">
+                        {% trans "Arzon narx kafolati" %}
+                    </span>
+                {% endif %}
+                
+                </div>
+                <span class="bg-[#13be4c] text-[#fff] text-[10px] px-[6px] py-[2px] rounded-full">{% trans "Super narx" %}</span>
+            </div>
+            <a href="{% url 'detail' detail_id=narsalar.id %}">
+                <span class="block text-[#ff4499] font-semibold mt-[6px] text-[14px]">{{ narsalar.asl_narhi }}</span>
+                <span class="text-[11px] text-[#7e818c] text-line-through mr-[170px]">{{ narsalar.skid_narhi }}</span>
+                <span class="text-[11px] text-[#ff4499] ">{% trans "Arzon narx kafolati" %}</span>
+                <span
+                    class="block bg-[#ffff00] w-[130px] h-[18px] text-[11px] flex justify-center items-center rounded-sm mt-[3px]">{{ narsalar.nasiya_narhi }} so'm / oyiga</span>
+                <div class="text-[11px] mt-[3px] h-[48px]">{{ narsalar.tavsifi }}</div>
+                <div>
+                    <div class="flex items-center justify-left w-[224px] mt-[4px]">
+
+                        <svg data-v-558ce626="" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" data-test-id="icon__rating-star"
+                            class="ui-icon  rating-icon mr-[5px]">
+                            <path
+                                d="M6.32279 0.887954C6.11862 0.790604 5.88141 0.790604 5.67723 0.887954C5.50072 0.972112 5.4034 1.11823 5.35433 1.19839C5.30359 1.28126 5.25151 1.38682 5.20075 1.48972L4.12288 3.67336L1.71185 4.02577C1.59836 4.04233 1.48191 4.05933 1.38745 4.08204C1.29607 4.10402 1.12711 4.15154 0.992657 4.29346C0.837112 4.45765 0.76396 4.68325 0.793571 4.90747C0.819166 5.10129 0.928088 5.23891 0.989188 5.31033C1.05235 5.38415 1.13667 5.46625 1.21885 5.54626L2.96275 7.24481L2.55127 9.64395C2.53184 9.75707 2.51192 9.87312 2.50424 9.97001C2.49682 10.0637 2.48965 10.2392 2.583 10.411C2.69098 10.6098 2.88292 10.7492 3.10535 10.7905C3.29766 10.8261 3.4623 10.7651 3.54912 10.729C3.63889 10.6918 3.7431 10.637 3.84468 10.5835L6.00001 9.45005L8.15535 10.5835C8.25693 10.637 8.36114 10.6918 8.45091 10.729C8.53773 10.7651 8.70237 10.8261 8.89467 10.7905C9.11711 10.7492 9.30904 10.6098 9.41702 10.411C9.51037 10.2392 9.5032 10.0637 9.49578 9.97001C9.48811 9.87312 9.46818 9.75708 9.44876 9.64397L9.03727 7.24481L10.7812 5.54624C10.8634 5.46623 10.9477 5.38414 11.0108 5.31033C11.0719 5.23891 11.1809 5.10129 11.2065 4.90747C11.2361 4.68325 11.1629 4.45765 11.0074 4.29346C10.8729 4.15154 10.704 4.10402 10.6126 4.08204C10.5181 4.05933 10.4017 4.04233 10.2882 4.02577L7.87714 3.67336L6.7993 1.48976C6.74853 1.38686 6.69644 1.28127 6.6457 1.19839C6.59662 1.11823 6.4993 0.972112 6.32279 0.887954Z"
+                                fill="#FFB54C"></path>
+                        </svg>
+                        <span class="text-[11px] text-[#7e818c]">4.9 ({{ narsalar.sharhlar }})</span>
+                    </div>
+                </div>
+            </a>
+            <button
+                class="block w-full h-[32px] bg-[#7000FF] text-[#fff] rounded-[8px] mt-[5px] hover:bg-[#7F4DFF] savat">{% trans "55" %}</button>
+            <div
+                class="w-full h-[32px] bg-[#F0F2F5] rounded-[6px] flex items-center justify-between p-[4px] cursor-pointer mt-[5px] hidden savatadd">
+                <div
+                    class="w-[24px] h-[24px] rounded-[5px] bg-white flex justify-center items-center cursor-pointer minus">
+                    <i class="bi bi-dash"></i>
+                </div>
+                <span class="count">1</span>
+                <div
+                    class="w-[24px] h-[24px] rounded-[5px] bg-white flex justify-center items-center cursor-pointer plus">
+                    <i class="bi bi-plus"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        class="error w-[300px] h-[50px] rounded-[16px] flex items-center justify-center bg-black text-white fixed bottom-[-50px] right-[12px] z-50 cursor-pointer font-medium transition-all duration-300 opacity-0">
+        <span><i class="bi bi-exclamation-circle-fill text-[18px]"></i> {% trans "Faqat 10 dona bor" %}</span>
+    </div>
+    <div
+        class="sucsess w-[300px] h-[50px] rounded-[16px] flex items-center justify-center bg-black text-white fixed bottom-[-50px] right-[12px] z-50 cursor-pointer font-medium transition-all duration-300 opacity-0">
+        <span><i class="bi bi-check-circle-fill text-green-500 text-[18px]"></i> {% trans "Tovar savatga qo'shildi" %}</span>
+    </div>
+    {% endfor %}
+    <div class="container_large h-[413px] mt-[32px] rounded-xl duration-500 overflow-hidden ">
+        <img class="rounded-xl hover:scale-105 duration-500"
+            src="https://images.uzum.uz/cu0fheei4n324lr3d4gg/main_page_banner.jpg" alt="sdfsd">
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const wishlist = JSON.parse(localStorage.getItem("saralanganlar")) || [];
+        const heartButtons = document.querySelectorAll(".wishlist-toggle");
+
+
+        heartButtons.forEach(btn => {
+            const card = btn.closest("[data-id]");
+            const productId = card.dataset.id;
+
+            // Bosishda toggle qilish
+            btn.addEventListener("click", () => {
+                let list = JSON.parse(localStorage.getItem("saralanganlar")) || [];
+
+                if (!list.includes(productId)) {
+                    list.push(productId);
+                    btn.innerHTML = '<i class="fa-solid fa-heart text-[#8967F0] text-[14px]"></i>';
+                } else {
+                    list = list.filter(id => id !== productId);
+                    btn.innerHTML = '<i class="fa-regular fa-heart text-[14px]"></i>';
+                }
+
+                localStorage.setItem("saralanganlar", JSON.stringify(list));
+            });
+
+            // Bosgan yurakchani to‘ldirish
+            if (wishlist.includes(productId)) {
+                btn.innerHTML = '<i class="fa-solid fa-heart text-red-500 text-[14px]"></i>';
+            }
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const savat = document.querySelectorAll(".savat");
+        const savatadd = document.querySelectorAll(".savatadd");
+        const count = document.querySelectorAll(".count");
+        const plus = document.querySelectorAll(".plus");
+        const minus = document.querySelectorAll(".minus");
+        const error = document.querySelector(".error");
+        const sucsess = document.querySelector(".sucsess");
+        const totalWrapper = document.getElementById("total-wrapper");
+        const totalCount = document.querySelector(".total-count");
+
+        function updateTotalCount() {
+            const countlar = [...count].map(el => parseInt(el.textContent));
+            const aktivMahsulotlar = countlar.filter(q => q > 0).length;
+
+            totalCount.textContent = aktivMahsulotlar;
+
+            if (aktivMahsulotlar > 0) {
+                totalWrapper.classList.remove("hidden");
+            } else {
+                totalWrapper.classList.add("hidden");
+            }
+
+            // Saqlash
+            localStorage.setItem("savatCountlar", JSON.stringify(countlar));
+        }
+
+        for (let i = 0; i < savat.length; i++) {
+            savat[i].addEventListener("click", () => {
+                if (parseInt(count[i].textContent) === 0) {
+                    count[i].textContent = 1;
+
+                    savat[i].classList.add("hidden");
+                    savatadd[i].classList.remove("hidden");
+
+                    updateTotalCount();
+
+                    // Success ko‘rsatish
+                    sucsess.classList.remove("bottom-[-50px]");
+                    sucsess.classList.remove("opacity-0");
+                    sucsess.classList.add("bottom-[10px]");
+                    setTimeout(() => {
+                        sucsess.classList.remove("bottom-[10px]");
+                        sucsess.classList.add("bottom-[20px]");
+                        sucsess.classList.add("opacity-0");
+                    }, 3000);
+                }
+            });
+
+            plus[i].addEventListener("click", () => {
+                let qiymat = parseInt(count[i].textContent);
+                if (qiymat >= 10) {
+                    error.classList.remove("bottom-[-50px]");
+                    error.classList.add("bottom-[10px]");
+                    error.classList.remove("opacity-0");
+                    setTimeout(() => {
+                        error.classList.remove("bottom-[10px]");
+                        error.classList.add("bottom-[30px]");
+                        error.classList.add("opacity-0");
+                    }, 3000);
+                    return;
+                }
+
+                count[i].textContent = qiymat + 1;
+                localStorage.setItem("savatCountlar", JSON.stringify([...count].map(el => parseInt(el.textContent))));
+            });
+
+
+            minus[i].addEventListener("click", () => {
+                let qiymat = parseInt(count[i].textContent);
+                if (qiymat > 1) {
+                    count[i].textContent = qiymat - 1;
+                } else if (qiymat === 1) {
+                    count[i].textContent = 0;
+                    savatadd[i].classList.add("hidden");
+                    savat[i].classList.remove("hidden");
+                }
+                updateTotalCount();
+            });
+        }
+
+        // Sahifa yuklanganda localStorage'dan o'qib olish
+        const oldCountlar = JSON.parse(localStorage.getItem("savatCountlar")) || [];
+        oldCountlar.forEach((qiymat, i) => {
+            if (count[i]) {
+                count[i].textContent = qiymat;
+                if (qiymat > 0) {
+                    savat[i].classList.add("hidden");
+                    savatadd[i].classList.remove("hidden");
+                } else {
+                    savatadd[i].classList.add("hidden");
+                    savat[i].classList.remove("hidden");
+                }
+            }
+        });
+
+        updateTotalCount();
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <script src="https://static.readdy.ai/static/e.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Uzum Market — O‘zbekistondagi Internet-do'kon va Marketpleys" </title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-lg border-r border-gray-200 flex flex-col">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="ri-store-3-line text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-['Pacifico'] text-xl text-gray-900">MENG</h1>
+                        <p class="text-xs text-gray-500">ONLINE SHOP</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation Menu -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <a href="{% url 'dashboard' %}" data-readdy="true"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-dashboard-line"></i>
+                    </div>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="{% url 'mahsulotlar' %}"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-box-3-line"></i>
+                    </div>
+                    <span class="font-medium">Mahsulotlar</span>
+                </a>
+                <a href="{% url 'buyurtmalar' %}"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-shopping-cart-line"></i>
+                    </div>
+                    <span class="font-medium">Buyurtmalar</span>
+                </a>
+                <a href="{% url 'mijozlar' %}" data-readdy="true"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-user-line"></i>
+                    </div>
+                    <span class="font-medium">Mijozlar</span>
+                </a>
+
+                <a href="{% url 'hisobotlar' %}"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-primary text-white">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-bar-chart-line"></i>
+                    </div>
+                    <span class="font-medium">Hisobotlar</span>
+                </a>
+
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top Navbar -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-6">
+                        <h2 class="text-2xl font-bold text-gray-900">Hisobotlar</h2>
+                        <!-- Date Range Filter -->
+                        <div class="flex items-center space-x-3">
+                            <div class="relative">
+                                <button
+                                    class="border border-gray-300 rounded-lg px-4 py-2 text-sm flex items-center space-x-2 hover:bg-gray-50 !rounded-button whitespace-nowrap"
+                                    id="dateRangeFilter">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-calendar-line"></i>
+                                    </div>
+                                    <span>So'nggi 30 kun</span>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </div>
+                                </button>
+                                <div class="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden"
+                                    id="dateRangeDropdown">
+                                    <div class="py-1">
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50">Bugun</button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50">Kecha</button>
+                                        <button class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50">So'nggi 7
+                                            kun</button>
+                                        <button class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50">So'nggi 30
+                                            kun</button>
+                                        <button class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50">So'nggi 3
+                                            oy</button>
+                                        <button class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50">So'nggi
+                                            yil</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                                title="Ma'lumotlarni yangilash">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-refresh-line"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-notification-line"></i>
+                            </div>
+                            <span
+                                class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                        </button>
+                        <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-settings-line"></i>
+                            </div>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=40&height=40&seq=admin-avatar&orientation=squarish"
+                                alt="Admin" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-medium text-gray-900">{{ request.user.username }}</p>
+                                <p class="text-sm text-gray-500">Administrator</p>
+                            </div>
+                        </div>
+                        <a href="{% url 'logout' %}">
+                            <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-logout-box-line"></i>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content Area -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <!-- Statistics Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Umumiy daromad</p>
+                                <p class="text-2xl font-bold text-gray-900">124,560,000</p>
+                                <p class="text-sm text-green-600 mt-1">+12.5% o'sish</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="ri-money-dollar-circle-line text-blue-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Buyurtmalar soni</p>
+                                <p class="text-2xl font-bold text-gray-900">2,847</p>
+                                <p class="text-sm text-green-600 mt-1">+8.2% o'sish</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i class="ri-shopping-cart-line text-green-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Mijozlar soni</p>
+                                <p class="text-2xl font-bold text-gray-900">4,562</p>
+                                <p class="text-sm text-orange-600 mt-1">+127 yangi</p>
+                            </div>
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <i class="ri-user-line text-orange-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Mahsulotlar soni</p>
+                                <p class="text-2xl font-bold text-gray-900">1,234</p>
+                                <p class="text-sm text-purple-600 mt-1">+45 yangi</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <i class="ri-box-3-line text-purple-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Export Controls -->
+                <div class="bg-white rounded-xl shadow-sm p-4 border border-gray-200 mb-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <h3 class="font-medium text-gray-900">Hisobotni eksport qilish</h3>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center space-x-2 !rounded-button whitespace-nowrap">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-file-pdf-line"></i>
+                                </div>
+                                <span>PDF</span>
+                            </button>
+                            <button
+                                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center space-x-2 !rounded-button whitespace-nowrap">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-file-excel-line"></i>
+                                </div>
+                                <span>Excel</span>
+                            </button>
+                            <button
+                                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2 !rounded-button whitespace-nowrap">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-file-text-line"></i>
+                                </div>
+                                <span>CSV</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <!-- Revenue Chart -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Daromadlar dinamikasi</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                <span class="text-sm text-gray-600">Daromad (mln so'm)</span>
+                            </div>
+                        </div>
+                        <div id="revenueChart" class="h-80"></div>
+                    </div>
+                    <!-- Orders Chart -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Buyurtmalar statistikasi</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Yakunlangan</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Jarayonda</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ordersChart" class="h-80"></div>
+                    </div>
+                </div>
+                <!-- Second Row Charts -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <!-- Top Products Chart -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Top mahsulotlar</h3>
+                        </div>
+                        <div id="topProductsChart" class="h-80"></div>
+                    </div>
+                    <!-- Customer Growth Chart -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Mijozlar o'sishi</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                                <span class="text-sm text-gray-600">Yangi mijozlar</span>
+                            </div>
+                        </div>
+                        <div id="customerGrowthChart" class="h-80"></div>
+                    </div>
+                </div>
+                <!-- Tables Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <!-- Recent Orders Table -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-900">So'nggi buyurtmalar</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Buyurtma ID</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Mijoz</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Summa</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">#ORD-2024-156</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">Dilshod Umarov</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">2,450,000 so'm</td>
+                                        <td class="px-4 py-3">
+                                            <span
+                                                class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Yetkazilgan</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">#ORD-2024-155</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">Malika Nazarova</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">1,890,000 so'm</td>
+                                        <td class="px-4 py-3">
+                                            <span
+                                                class="inline-flex px-2 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">Jarayonda</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">#ORD-2024-154</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">Bobur Rahimov</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">3,200,000 so'm</td>
+                                        <td class="px-4 py-3">
+                                            <span
+                                                class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Yetkazilgan</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">#ORD-2024-153</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">Nigora Saidova</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">1,650,000 so'm</td>
+                                        <td class="px-4 py-3">
+                                            <span
+                                                class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Yetkazilgan</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">#ORD-2024-152</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">Jasur Toshmatov</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">980,000 so'm</td>
+                                        <td class="px-4 py-3">
+                                            <span
+                                                class="inline-flex px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Bekor
+                                                qilingan</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Top Customers Table -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-900">Top mijozlar reytingi</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Mijoz</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Buyurtmalar</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jami
+                                            summa</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=32&height=32&seq=top-customer-1&orientation=squarish"
+                                                    alt="Gulnora Abdullayeva" class="w-8 h-8 rounded-full object-cover">
+                                                <span class="text-sm font-medium text-gray-900">Gulnora
+                                                    Abdullayeva</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">67</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">15,890,000 so'm</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=32&height=32&seq=top-customer-2&orientation=squarish"
+                                                    alt="Dilshod Umarov" class="w-8 h-8 rounded-full object-cover">
+                                                <span class="text-sm font-medium text-gray-900">Dilshod Umarov</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">47</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">12,450,000 so'm</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=32&height=32&seq=top-customer-3&orientation=squarish"
+                                                    alt="Nigora Saidova" class="w-8 h-8 rounded-full object-cover">
+                                                <span class="text-sm font-medium text-gray-900">Nigora Saidova</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">34</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">8,760,000 so'm</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=32&height=32&seq=top-customer-4&orientation=squarish"
+                                                    alt="Malika Nazarova" class="w-8 h-8 rounded-full object-cover">
+                                                <span class="text-sm font-medium text-gray-900">Malika Nazarova</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">23</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">6,340,000 so'm</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=32&height=32&seq=top-customer-5&orientation=squarish"
+                                                    alt="Otabek Yusupov" class="w-8 h-8 rounded-full object-cover">
+                                                <span class="text-sm font-medium text-gray-900">Otabek Yusupov</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">15</td>
+                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">4,890,000 so'm</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Categories Analysis -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Mahsulotlar kategoriyalari bo'yicha tahlil</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                                        Kategoriya</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                                        Mahsulotlar soni</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Sotilgan
+                                        miqdor</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Daromad
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">O'sish
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                                <i class="ri-smartphone-line text-blue-600"></i>
+                                            </div>
+                                            <span class="font-medium text-gray-900">Elektronika</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">234</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">1,847</td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">45,670,000 so'm</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                                            <i class="ri-arrow-up-line mr-1"></i>
+                                            +15.3%
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                                                <i class="ri-shirt-line text-green-600"></i>
+                                            </div>
+                                            <span class="font-medium text-gray-900">Kiyim-kechak</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">456</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">2,134</td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">32,890,000 so'm</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                                            <i class="ri-arrow-up-line mr-1"></i>
+                                            +8.7%
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                                                <i class="ri-home-line text-orange-600"></i>
+                                            </div>
+                                            <span class="font-medium text-gray-900">Uy-ro'zg'or buyumlari</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">189</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">967</td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">23,450,000 so'm</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                                            <i class="ri-arrow-up-line mr-1"></i>
+                                            +12.1%
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                                                <i class="ri-book-line text-purple-600"></i>
+                                            </div>
+                                            <span class="font-medium text-gray-900">Kitoblar</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">345</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">1,234</td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">18,670,000 so'm</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">
+                                            <i class="ri-arrow-down-line mr-1"></i>
+                                            -3.2%
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center">
+                                                <i class="ri-heart-line text-pink-600"></i>
+                                            </div>
+                                            <span class="font-medium text-gray-900">Go'zallik va salomatlik</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">123</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">678</td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">15,230,000 so'm</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                                            <i class="ri-arrow-up-line mr-1"></i>
+                                            +6.8%
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script id="dateRangeFilter">
+        document.addEventListener('DOMContentLoaded', function () {
+            const dateRangeFilter = document.getElementById('dateRangeFilter');
+            const dateRangeDropdown = document.getElementById('dateRangeDropdown');
+            dateRangeFilter.addEventListener('click', function (e) {
+                e.preventDefault();
+                dateRangeDropdown.classList.toggle('hidden');
+            });
+            document.addEventListener('click', function (e) {
+                if (!dateRangeFilter.contains(e.target) && !dateRangeDropdown.contains(e.target)) {
+                    dateRangeDropdown.classList.add('hidden');
+                }
+            });
+            const dateOptions = dateRangeDropdown.querySelectorAll('button');
+            dateOptions.forEach(option => {
+                option.addEventListener('click', function () {
+                    const dateText = this.textContent;
+                    dateRangeFilter.querySelector('span').textContent = dateText;
+                    dateRangeDropdown.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+    <script id="revenueChart">
+        document.addEventListener('DOMContentLoaded', function () {
+            const revenueChart = echarts.init(document.getElementById('revenueChart'));
+            const revenueOption = {
+                animation: false,
+                grid: {
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: '#e5e7eb',
+                    textStyle: {
+                        color: '#1f2937'
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#6b7280'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#6b7280'
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#f3f4f6'
+                        }
+                    }
+                },
+                series: [{
+                    data: [8.5, 9.2, 10.1, 11.8, 12.3, 13.7, 15.2, 14.8, 16.3, 17.1, 18.9, 19.5],
+                    type: 'line',
+                    smooth: true,
+                    lineStyle: {
+                        color: 'rgba(87, 181, 231, 1)',
+                        width: 3
+                    },
+                    itemStyle: {
+                        color: 'rgba(87, 181, 231, 1)'
+                    },
+                    showSymbol: false,
+                    areaStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0,
+                                color: 'rgba(87, 181, 231, 0.1)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(87, 181, 231, 0.01)'
+                            }]
+                        }
+                    }
+                }]
+            };
+            revenueChart.setOption(revenueOption);
+        });
+    </script>
+    <script id="ordersChart">
+        document.addEventListener('DOMContentLoaded', function () {
+            const ordersChart = echarts.init(document.getElementById('ordersChart'));
+            const ordersOption = {
+                animation: false,
+                grid: {
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: '#e5e7eb',
+                    textStyle: {
+                        color: '#1f2937'
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#6b7280'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#6b7280'
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#f3f4f6'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Yakunlangan',
+                    type: 'bar',
+                    data: [185, 203, 234, 267, 289, 312, 345, 378, 398, 423, 456, 489],
+                    itemStyle: {
+                        color: 'rgba(141, 211, 199, 1)',
+                        borderRadius: [4, 4, 0, 0]
+                    }
+                }, {
+                    name: 'Jarayonda',
+                    type: 'bar',
+                    data: [45, 52, 38, 67, 43, 56, 78, 65, 89, 76, 92, 85],
+                    itemStyle: {
+                        color: 'rgba(251, 191, 114, 1)',
+                        borderRadius: [4, 4, 0, 0]
+                    }
+                }]
+            };
+            ordersChart.setOption(ordersOption);
+        });
+    </script>
+    <script id="topProductsChart">
+        document.addEventListener('DOMContentLoaded', function () {
+            const topProductsChart = echarts.init(document.getElementById('topProductsChart'));
+            const topProductsOption = {
+                animation: false,
+                grid: {
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: '#e5e7eb',
+                    textStyle: {
+                        color: '#1f2937'
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    center: ['50%', '50%'],
+                    data: [
+                        { value: 35, name: 'Elektronika', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+                        { value: 28, name: 'Kiyim-kechak', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+                        { value: 20, name: 'Uy-ro\'zg\'or', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+                        { value: 17, name: 'Boshqalar', itemStyle: { color: 'rgba(252, 141, 98, 1)' } }
+                    ],
+                    itemStyle: {
+                        borderRadius: 8
+                    },
+                    label: {
+                        color: '#1f2937'
+                    }
+                }]
+            };
+            topProductsChart.setOption(topProductsOption);
+        });
+    </script>
+    <script id="customerGrowthChart">
+        document.addEventListener('DOMContentLoaded', function () {
+            const customerGrowthChart = echarts.init(document.getElementById('customerGrowthChart'));
+            const customerGrowthOption = {
+                animation: false,
+                grid: {
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: '#e5e7eb',
+                    textStyle: {
+                        color: '#1f2937'
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#6b7280'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#e5e7eb'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#6b7280'
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#f3f4f6'
+                        }
+                    }
+                },
+                series: [{
+                    data: [89, 112, 134, 156, 178, 203, 234, 267, 298, 334, 367, 398],
+                    type: 'line',
+                    smooth: true,
+                    lineStyle: {
+                        color: 'rgba(139, 92, 246, 1)',
+                        width: 3
+                    },
+                    itemStyle: {
+                        color: 'rgba(139, 92, 246, 1)'
+                    },
+                    showSymbol: false,
+                    areaStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0,
+                                color: 'rgba(139, 92, 246, 0.1)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(139, 92, 246, 0.01)'
+                            }]
+                        }
+                    }
+                }]
+            };
+            customerGrowthChart.setOption(customerGrowthOption);
+        });
+    </script>
+    <script id="exportFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const exportButtons = document.querySelectorAll('button[class*="bg-red-600"], button[class*="bg-green-600"], button[class*="bg-blue-600"]');
+            exportButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const format = this.querySelector('span').textContent;
+                    console.log(`Hisobot ${format} formatida eksport qilindi`);
+                });
+            });
+        });
+    </script>
+    <script id="refreshFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const refreshButton = document.querySelector('button[title="Ma\'lumotlarni yangilash"]');
+            refreshButton.addEventListener('click', function () {
+                this.classList.add('animate-spin');
+                setTimeout(() => {
+                    this.classList.remove('animate-spin');
+                    console.log('Ma\'lumotlar yangilandi');
+                }, 1000);
+            });
+        });
+    </script>
+   
+
+</body>
+
+</html>

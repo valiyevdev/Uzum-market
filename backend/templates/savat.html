@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savatcha</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#7C3AED',
+            grayLabel: '#6B7280',
+            lightGray: '#F3F4F6',
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-white text-[#1A1A1A] font-sans">
+  <div class="max-w-[1200px] mx-auto px-6 py-8">
+
+
+   
+    
+
+
+
+    <h1 class="text-2xl font-semibold mb-5">Savatingiz, <span class="text-gray-500">1 mahsulot</span></h1>
+
+    <div class="flex flex-col lg:flex-row gap-6">
+      <!-- Chap blok -->
+      <div class="flex-1 border border-gray-200 rounded-xl p-4">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <input type="checkbox" checked class="accent-primary w-5 h-5" />
+            <span class="font-medium">Hammasini tanlash</span>
+          </div>
+          <p class="text-sm text-grayLabel">
+            Yetkazib berishning eng yaqin sanasi: <span class="text-primary font-semibold dynamic-date"></span>
+          </p>
+        </div>
+
+        <!-- Mahsulot -->
+     
+        <div class="border-t pt-4 flex items-start gap-4 relative">
+          
+          <input type="checkbox" checked class="accent-primary mt-2 w-5 h-5" />
+          
+          <img src="{% static 'img/kl.jpg' %}" alt="klaviatura" class="w-24 h-28 object-cover rounded border" />
+
+          <div class="flex-1 pr-10">
+            <p class="text-xs text-gray-400">Uzum Market yetkazib berishi</p>
+            <p class="font-semibold text-sm mt-1">
+              <span class="dynamic-date"></span>dan boshlab yetkazamiz
+            </p>
+            <p class="mt-2 text-sm leading-5 font-medium">
+              Mexanik klaviatura Ziyoulang o'yinbop, led chiroqlari bilan
+            </p>
+            <p class="text-gray-500 text-sm mt-2">Sotuvchi: <span class="text-black">UDOBNO SHOP</span></p>
+            <p class="text-gray-500 text-sm">Rang: <span class="text-black">Qora</span></p> 
+          </div>
+
+          <!-- SVG: Trash -->
+          <button class="absolute top-0 right-0 p-2 hover:bg-gray-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <!-- Narx va + / - -->
+          <div class="flex flex-col items-end gap-3 absolute right-0 bottom-0">
+            <div class="flex items-center gap-2">
+              <button onclick="changeQty(-1)" class="w-8 h-8 border rounded text-lg">−</button>
+              <span id="qty" class="w-6 text-center">1</span>
+              <button onclick="changeQty(1)" class="w-8 h-8 border rounded text-lg">+</button>
+            </div>
+            <div class="text-right">
+              <p id="uzumPrice" class="text-lg font-bold text-primary">379 990 so'm</p>
+              <p class="text-xs text-gray-500">Uzum kartasiz <span id="nonUzumPrice">399 990</span> so'm</p>
+            </div>
+          </div>
+        </a>
+        </div>
+       
+      </div>
+
+      <!-- O‘ng blok -->
+      <div class="w-full lg:w-[360px] border border-gray-200 rounded-xl p-4 space-y-3">
+        <h2 class="font-semibold text-lg">Buyurtmangiz</h2>
+
+        <div class="flex justify-between text-sm">
+          <p>Mahsulotlar (1):</p>
+          <p id="totalPrice">849 000 so'm</p>
+        </div>
+
+        <button class="w-full border border-primary text-primary py-2 rounded-md text-sm">
+          Yetkazib berish <span class="dynamic-date"></span>
+        </button>
+
+        <div class="bg-lightGray p-3 rounded-md">
+          <div class="flex justify-between text-sm">
+            <span>Topshirish punktiga</span>
+            <span>0 so'm</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span>Kuryer orqali</span>
+            <span>30 000 so'm</span>
+          </div>
+        </div>
+
+        <div class="border-t border-b py-3 text-sm">
+          <p class="text-grayLabel mb-1">Uzum karta bilan</p>
+          <p id="uzumTotal" class="text-xl font-bold text-primary">379 990 so'm</p>
+          <p id="economy" class="text-green-600">Tejovingiz: 469 010 so'm</p>
+        </div>
+
+        <p class="text-grayLabel">Uzum kartasiz</p>
+        <p id="nonUzumTotal">399 990 so'm</p>
+
+        <a href="{% url 'rasmiylashtirish' %}">
+          <button class="bg-primary hover:bg-purple-700 text-white w-full py-3 rounded-lg font-semibold text-sm">
+            Rasmiylashtirishga o'tish
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sanani 5 kun keyinga olish
+    function getDeliveryDate() {
+      const today = new Date();
+      today.setDate(today.getDate() + 5);
+
+      const oylar = [
+        "yanvar", "fevral", "mart", "aprel", "may", "iyun",
+        "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"
+      ];
+
+      const day = today.getDate();
+      const month = oylar[today.getMonth()];
+      return `${day}-${month}`;
+    }
+
+    // Sahifa yuklanganda avtomatik sanani joylash
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateElements = document.querySelectorAll(".dynamic-date");
+      const dateText = getDeliveryDate();
+      dateElements.forEach(el => el.innerText = dateText);
+    });
+
+    // Mahsulot sonini o‘zgartirish funksiyasi
+    let qty = 1;
+    const uzumNarx = 379990;
+    const nonUzumNarx = 399990;
+
+    function changeQty(delta) {
+      qty += delta;
+      if (qty < 1) qty = 1;
+
+      document.getElementById('qty').innerText = qty;
+      document.getElementById('uzumPrice').innerText = (uzumNarx * qty).toLocaleString('uz-UZ') + " so'm";
+      document.getElementById('nonUzumPrice').innerText = (nonUzumNarx * qty).toLocaleString('uz-UZ');
+
+      document.getElementById('totalPrice').innerText = (849000 * qty).toLocaleString('uz-UZ') + " so'm";
+      document.getElementById('uzumTotal').innerText = (uzumNarx * qty).toLocaleString('uz-UZ') + " so'm";
+      document.getElementById('nonUzumTotal').innerText = (nonUzumNarx * qty).toLocaleString('uz-UZ') + " so'm";
+
+      const economy = (nonUzumNarx - uzumNarx) * qty;
+      document.getElementById('economy').innerText = "Tejovingiz: " + economy.toLocaleString('uz-UZ') + " so'm";
+    }
+  </script>
+</body>
+</html>
+
+{% endblock %}

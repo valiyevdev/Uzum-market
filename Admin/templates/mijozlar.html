@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <script src="https://static.readdy.ai/static/e.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Uzum Market — O‘zbekistondagi Internet-do'kon va Marketpleys" </title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-lg border-r border-gray-200 flex flex-col">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="ri-store-3-line text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-['Pacifico'] text-xl text-gray-900">MENG</h1>
+                        <p class="text-xs text-gray-500">ONLINE SHOP</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation Menu -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <a href="{% url 'dashboard' %}"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-dashboard-line"></i>
+                    </div>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="{% url 'mahsulotlar' %}"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-box-3-line"></i>
+                    </div>
+                    <span class="font-medium">Mahsulotlar</span>
+                </a>
+                <a href="{% url 'buyurtmalar' %}"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-shopping-cart-line"></i>
+                    </div>
+                    <span class="font-medium">Buyurtmalar</span>
+                </a>
+                <a href="{% url 'mijozlar' %}"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-primary text-white">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-user-line"></i>
+                    </div>
+                    <span class="font-medium">Mijozlar</span>
+                </a>
+
+                <a href="{% url 'hisobotlar' %}" data-readdy="true"
+                    class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-bar-chart-line"></i>
+                    </div>
+                    <span class="font-medium">Hisobotlar</span>
+                </a>
+
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top Navbar -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <h2 class="text-2xl font-bold text-gray-900">Mijozlar boshqaruvi</h2>
+                        <div class="relative">
+                            <input type="text" placeholder="Mijozlarni qidirish..."
+                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-80 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <div
+                                class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+                                <i class="ri-search-line text-gray-400 text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-notification-line"></i>
+                            </div>
+                            <span
+                                class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                        </button>
+                        <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-settings-line"></i>
+                            </div>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=40&height=40&seq=admin-avatar&orientation=squarish"
+                                alt="Admin" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-medium text-gray-900">{{ request.user.username }}</p>
+                                <p class="text-sm text-gray-500">Administrator</p>
+                            </div>
+                        </div>
+                        <a href="{% url 'logout' %}">
+                            <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                                <div class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-logout-box-line"></i>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content Area -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <!-- Statistics Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between">
+                            
+                            <div>
+                                <p class="text-sm text-gray-600">Umumiy mijozlar</p>
+                                <p class="text-2xl font-bold text-gray-900">{{ total_users }}</p>
+                                <p class="text-sm text-blue-600 mt-1">+127 yangi mijoz</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="ri-user-line text-blue-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Faol mijozlar</p>
+                                <p class="text-2xl font-bold text-gray-900">3,847</p>
+                                <p class="text-sm text-green-600 mt-1">84.3% faol</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i class="ri-user-star-line text-green-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Yangi mijozlar</p>
+                                <p class="text-2xl font-bold text-gray-900">127</p>
+                                <p class="text-sm text-orange-600 mt-1">Bu oyda</p>
+                            </div>
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <i class="ri-user-add-line text-orange-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Filter Controls -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200 mb-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="relative">
+                                <button
+                                    class="border border-gray-300 rounded-lg px-4 py-2 text-sm flex items-center space-x-2 hover:bg-gray-50 !rounded-button whitespace-nowrap"
+                                    id="statusFilter">
+                                    <span>Barcha statuslar</span>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </div>
+                                </button>
+                                <div class="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden"
+                                    id="statusDropdown">
+                                    <div class="py-1">
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 flex items-center space-x-2">
+                                            <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                                            <span>Faol</span>
+                                        </button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 flex items-center space-x-2">
+                                            <span class="w-3 h-3 bg-gray-500 rounded-full"></span>
+                                            <span>Nofaol</span>
+                                        </button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 flex items-center space-x-2">
+                                            <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                                            <span>Bloklangan</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <input type="date"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent !rounded-button">
+                            </div>
+                            <div class="relative">
+                                <input type="text" placeholder="Mijoz nomi yoki email..."
+                                    class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-72 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <div
+                                    class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-search-line text-gray-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2 !rounded-button whitespace-nowrap"
+                                id="addCustomerBtn">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-user-add-line"></i>
+                                </div>
+                                <span>Mijoz qo'shish</span>
+                            </button>
+                            <button
+                                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center space-x-2 !rounded-button whitespace-nowrap">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-download-line"></i>
+                                </div>
+                                <span>Eksport</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Customers Table -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Mijoz ID</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Mijoz ma'lumotlari</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Ro'yxatdan o'tgan sana</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Status</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Buyurtmalar soni</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                {% for users in users %}
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="font-medium text-gray-900">#CUS-2024-001</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-3">
+                                            <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=40&height=40&seq=customer-1&orientation=squarish"
+                                                alt="Dilshod Umarov" class="w-10 h-10 rounded-full object-cover">
+                                            <div>
+                                                
+                                                <p class="font-medium text-gray-900">{{ users.username }}</p>
+                                                <p class="text-sm text-gray-500">{{ users.email }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">{{ users.date_joined|date:"d-m-Y H:i" }}</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">{{  users.is_active}}</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ users.orders.count }}</td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-2">
+                                            <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg view-customer"
+                                                title="Tafsilotlar">
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-eye-line"></i>
+                                                </div>
+                                            </button>
+                                            <button
+                                                class="p-2 text-green-600 hover:bg-green-50 rounded-lg edit-customer"
+                                                title="Tahrirlash">
+                                                <div class="w-4 h-4 flex items-center justify-center">
+                                                    <i class="ri-edit-line"></i>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>   
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div class="bg-white rounded-xl shadow-sm p-4 border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <p class="text-sm text-gray-700">
+                                <span class="font-medium">1</span> dan <span class="font-medium">8</span> gacha
+                                ko'rsatilmoqda, jami <span class="font-medium">4,562</span> ta
+                            </p>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-700">Sahifada:</span>
+                                <button
+                                    class="border border-gray-300 rounded px-3 py-1 text-sm hover:bg-gray-50 !rounded-button whitespace-nowrap"
+                                    id="itemsPerPage">
+                                    <span>10</span>
+                                    <div class="inline-block w-4 h-4 ml-1">
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button
+                                class="px-3 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 disabled:opacity-50 !rounded-button whitespace-nowrap"
+                                disabled>
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-arrow-left-s-line"></i>
+                                </div>
+                            </button>
+                            <button
+                                class="px-3 py-2 bg-primary text-white rounded-lg text-sm !rounded-button whitespace-nowrap">1</button>
+                            <button
+                                class="px-3 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 !rounded-button whitespace-nowrap">2</button>
+                            <button
+                                class="px-3 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 !rounded-button whitespace-nowrap">3</button>
+                            <span class="px-2 text-gray-500">...</span>
+                            <button
+                                class="px-3 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 !rounded-button whitespace-nowrap">457</button>
+                            <button
+                                class="px-3 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 !rounded-button whitespace-nowrap">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-arrow-right-s-line"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Customer Details Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="customerModal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl shadow-xl max-w-3xl w-full max-h-screen overflow-y-auto">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-gray-900">Mijoz tafsilotlari</h3>
+                        <button class="p-2 text-gray-400 hover:text-gray-600" id="closeCustomerModal">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-close-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=80&height=80&seq=customer-detail&orientation=squarish"
+                                alt="Mijoz" class="w-20 h-20 rounded-full object-cover">
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">Dilshod Umarov</h4>
+                                <p class="text-gray-600">dilshod.umarov@gmail.com</p>
+                                <span
+                                    class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full mt-2">Faol</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-medium text-gray-900 mb-3">Shaxsiy ma'lumotlar</h4>
+                                <div class="space-y-2 text-sm">
+                                    <p><span class="text-gray-600">Mijoz ID:</span> <span
+                                            class="font-medium">#CUS-2024-001</span></p>
+                                    <p><span class="text-gray-600">To'liq ism:</span> <span class="font-medium">Dilshod
+                                            Umarov</span></p>
+                                    <p><span class="text-gray-600">Telefon:</span> <span class="font-medium">+998 90 123
+                                            45 67</span></p>
+                                    <p><span class="text-gray-600">Tug'ilgan sana:</span> <span
+                                            class="font-medium">15.03.1985</span></p>
+                                    <p><span class="text-gray-600">Jinsi:</span> <span class="font-medium">Erkak</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900 mb-3">Kontakt ma'lumotlari</h4>
+                                <div class="space-y-2 text-sm">
+                                    <p><span class="text-gray-600">Email:</span> <span
+                                            class="font-medium">dilshod.umarov@gmail.com</span></p>
+                                    <p><span class="text-gray-600">Manzil:</span> <span class="font-medium">Toshkent
+                                            shahar, Chilonzor tumani, 12-mavze, 34-uy</span></p>
+                                    <p><span class="text-gray-600">Ro'yxatdan o'tgan sana:</span> <span
+                                            class="font-medium">15.01.2024</span></p>
+                                    <p><span class="text-gray-600">Oxirgi faollik:</span> <span class="font-medium">2
+                                            soat oldin</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-3">Buyurtmalar statistikasi</h4>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="bg-blue-50 rounded-lg p-4 text-center">
+                                    <p class="text-2xl font-bold text-blue-600">47</p>
+                                    <p class="text-sm text-blue-600">Jami buyurtmalar</p>
+                                </div>
+                                <div class="bg-green-50 rounded-lg p-4 text-center">
+                                    <p class="text-2xl font-bold text-green-600">45</p>
+                                    <p class="text-sm text-green-600">Yakunlangan</p>
+                                </div>
+                                <div class="bg-orange-50 rounded-lg p-4 text-center">
+                                    <p class="text-2xl font-bold text-orange-600">12,450,000</p>
+                                    <p class="text-sm text-orange-600">Jami summa (so'm)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-3">So'nggi buyurtmalar</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-gray-900">#ORD-2024-001</p>
+                                        <p class="text-sm text-gray-600">2024-12-15</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-900">2,450,000 so'm</p>
+                                        <span
+                                            class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Yetkazilgan</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-gray-900">#ORD-2024-045</p>
+                                        <p class="text-sm text-gray-600">2024-12-10</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-900">1,890,000 so'm</p>
+                                        <span
+                                            class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Yetkazilgan</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-gray-900">#ORD-2024-032</p>
+                                        <p class="text-sm text-gray-600">2024-12-05</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-900">3,200,000 so'm</p>
+                                        <span
+                                            class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Yetkazilgan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-3">Status o'zgartirish</h4>
+                            <div class="flex gap-2">
+                                <button
+                                    class="px-3 py-1 text-xs bg-green-100 text-green-800 rounded-full hover:bg-green-200 !rounded-button whitespace-nowrap">Faol</button>
+                                <button
+                                    class="px-3 py-1 text-xs bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200 !rounded-button whitespace-nowrap">Nofaol</button>
+                                <button
+                                    class="px-3 py-1 text-xs bg-red-100 text-red-800 rounded-full hover:bg-red-200 !rounded-button whitespace-nowrap">Bloklash</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Customer Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="addCustomerModal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-screen overflow-y-auto">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-gray-900">Yangi mijoz qo'shish</h3>
+                        <button class="p-2 text-gray-400 hover:text-gray-600" id="closeAddCustomerModal">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-close-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Ism</label>
+                                <input type="text"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                    placeholder="Mijoz ismi">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Familiya</label>
+                                <input type="text"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                    placeholder="Mijoz familiyasi">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                placeholder="mijoz@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefon raqam</label>
+                            <input type="tel"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                placeholder="+998 90 123 45 67">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Manzil</label>
+                            <textarea
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                rows="3" placeholder="To'liq manzil"></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tug'ilgan sana</label>
+                                <input type="date"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Jinsi</label>
+                                <div class="flex items-center space-x-4">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="gender" value="male" class="hidden">
+                                        <div
+                                            class="w-4 h-4 border-2 border-gray-300 rounded-full mr-2 flex items-center justify-center cursor-pointer">
+                                            <div class="w-2 h-2 bg-primary rounded-full hidden"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-700">Erkak</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="gender" value="female" class="hidden">
+                                        <div
+                                            class="w-4 h-4 border-2 border-gray-300 rounded-full mr-2 flex items-center justify-center cursor-pointer">
+                                            <div class="w-2 h-2 bg-primary rounded-full hidden"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-700">Ayol</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end space-x-3 pt-6">
+                            <button type="button"
+                                class="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 !rounded-button whitespace-nowrap"
+                                id="cancelAddCustomer">
+                                Bekor qilish
+                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 !rounded-button whitespace-nowrap">
+                                Mijoz qo'shish
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="searchFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInputs = document.querySelectorAll('input[type="text"]');
+            searchInputs.forEach(input => {
+                input.addEventListener('input', function (e) {
+                    console.log('Qidiruv: ', e.target.value);
+                });
+            });
+        });
+    </script>
+    <script id="filterFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const statusFilter = document.getElementById('statusFilter');
+            const statusDropdown = document.getElementById('statusDropdown');
+            statusFilter.addEventListener('click', function (e) {
+                e.preventDefault();
+                statusDropdown.classList.toggle('hidden');
+            });
+            document.addEventListener('click', function (e) {
+                if (!statusFilter.contains(e.target) && !statusDropdown.contains(e.target)) {
+                    statusDropdown.classList.add('hidden');
+                }
+            });
+            const statusOptions = statusDropdown.querySelectorAll('button');
+            statusOptions.forEach(option => {
+                option.addEventListener('click', function () {
+                    const statusText = this.querySelector('span:last-child').textContent;
+                    statusFilter.querySelector('span').textContent = statusText;
+                    statusDropdown.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+    <script id="customerModalFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const customerModal = document.getElementById('customerModal');
+            const closeCustomerModal = document.getElementById('closeCustomerModal');
+            const viewButtons = document.querySelectorAll('.view-customer');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    customerModal.classList.remove('hidden');
+                });
+            });
+            closeCustomerModal.addEventListener('click', function () {
+                customerModal.classList.add('hidden');
+            });
+            customerModal.addEventListener('click', function (e) {
+                if (e.target === customerModal) {
+                    customerModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    <script id="addCustomerModalFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const addCustomerModal = document.getElementById('addCustomerModal');
+            const addCustomerBtn = document.getElementById('addCustomerBtn');
+            const closeAddCustomerModal = document.getElementById('closeAddCustomerModal');
+            const cancelAddCustomer = document.getElementById('cancelAddCustomer');
+            addCustomerBtn.addEventListener('click', function () {
+                addCustomerModal.classList.remove('hidden');
+            });
+            closeAddCustomerModal.addEventListener('click', function () {
+                addCustomerModal.classList.add('hidden');
+            });
+            cancelAddCustomer.addEventListener('click', function () {
+                addCustomerModal.classList.add('hidden');
+            });
+            addCustomerModal.addEventListener('click', function (e) {
+                if (e.target === addCustomerModal) {
+                    addCustomerModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    <script id="radioButtonFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                const visualRadio = radio.nextElementSibling.querySelector('div');
+                radio.addEventListener('change', function () {
+                    document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => {
+                        r.nextElementSibling.querySelector('div').classList.add('hidden');
+                    });
+                    if (this.checked) {
+                        visualRadio.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+    <script id="statusUpdateFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const editButtons = document.querySelectorAll('.edit-customer');
+            const modalStatusButtons = document.querySelectorAll('#customerModal button[class*="bg-"]');
+            editButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    document.getElementById('customerModal').classList.remove('hidden');
+                });
+            });
+            modalStatusButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const status = this.textContent.trim();
+                    console.log('Status yangilandi: ', status);
+                });
+            });
+        });
+    </script>
+    <script id="paginationFunctionality">
+        document.addEventListener('DOMContentLoaded', function () {
+            const paginationButtons = document.querySelectorAll('button[class*="px-3 py-2"]');
+            const itemsPerPageButton = document.getElementById('itemsPerPage');
+            paginationButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    if (!this.disabled) {
+                        console.log('Sahifa o\'zgartirildi');
+                    }
+                });
+            });
+            itemsPerPageButton.addEventListener('click', function () {
+                console.log('Sahifadagi elementlar soni o\'zgartirildi');
+            });
+        });
+    </script>
+</body>
+
+</html>

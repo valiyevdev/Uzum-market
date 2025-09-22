@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzum Market maxfiylik siyosati</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="overflow-x-hidden">
+    <nav
+        class="w-full h-[70px] py-[11px] px-[54px] flex items-center justify-between fixed top-0 left-0 bg-white z-50 border-b-[1px] border-[#eaecef]">
+        <!-- logo -->
+        <a href="{% url 'home' %}" class="w-[110px] h-[36px] flex items-center justify-center">
+            <img class="w-[110px] h-[36px] max-w-[110px] max-h-[36px] object-cover" src="https://legal.uzum.uz/logo.svg"
+                alt="logo">
+        </a>
+        <!-- logo end -->
+        <!-- search -->
+        <div class="w-[464px] h-[46px] relative cursor-text">
+            <button class="w-[50px] h-[50px] flex items-center absolute top-0 left-0 justify-center cursor-text"><i
+                    class="bi bi-search text-[#A0A0A0] text-[18px]"></i></button>
+            <input type="search" placeholder="Быстрый поиск"
+                class="w-full h-full rounded-[6px] pl-[50px] bg-[#F0F1F3] outline-none text-[#A0A0A0]">
+        </div>
+        <!-- search end -->
+        <!-- shortcuts -->
+        <div class="w-[197px] h-[46px] flex items-center justify-between text-[#1f2026] text-[14px] font-semibold">
+            <a href="{% url 'home' %}" class="w-[56px] h-[32px] cursor-pointer flex items-center justify-between">
+                <span>Uzum</span>
+                <i class="bi bi-box-arrow-up-right text-[12px] text-[#AAAAAA]"></i>
+            </a>
+            <div class="w-[116px] h-[32px] cursor-pointer flex items-center justify-between">
+                <span>Uzum Business</span>
+                <i class="bi bi-box-arrow-up-right text-[12px] text-[#AAAAAA]"></i>
+            </div>
+        </div>
+        <!-- shortcuts end -->
+    </nav>
+
+
+    <!-- sidebar -->
+    <div
+        class="w-[320px] h-[515px] border-r-[1px] border-[#eaecef] fixed top-[70px] left-[30px] overflow-y-scroll leading-[18px] overflow-x-hidden">
+        <div class="w-[304px] pt-[24px] bg-[#F7F7F7] px-[16px]">
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Политика конфиденциальности
+                Uzum Market</a>
+            <ul class="w-[304px] h-[350px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">1. Вводная часть</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Основные понятия</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Предмет регулирования</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Кто обрабатывает данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Какая информация обрабатывается Uzum Market</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Цели обработки</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Порядок сбора, хранения, передачи и других видов
+                        обработки Конфиденциальной информации</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Трансграничная передача персональных данных</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Права владельца Конфиденциальной информации</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] pt-[24px] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold text-[#EA615D]">Uzum Market maxfiylik siyosati</a>
+            <ul class="w-[304px] h-[350px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">1. Kirish qismi</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Asosiy tushunchalar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Tartibga solish predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Ma’lumotlarga kim ishlov beradi</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Uzum Market tomonidan qanday ma’lumotlarga ishlov
+                        beriladi</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Ishlov berishdan maqsad</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Maxfiy ma’lumotlarni to’plash, saqlash, uzatish va
+                        ularga boshqa tarzda ishlov berish tartibi</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Shaxsga doir ma’lumotlarni transchegaraviy uzatish</a>
+                </li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Maxfiy ma’lumotlar egasining huquqlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Пользовательское
+                соглашение</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Термины и определения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Предмет соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Регистрация и авторизация</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Совершение покупок</a></li>
+
+                <li class="hover:text-[#EA615D]"><a href="#">4. Возврат денежных средств Покупателя</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Права и обязанности сторон</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Условия публикации отзывов Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Нарушение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. Политика e-mail рассылок</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Ограничение ответственности</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">10. Претензии Покупателей.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Персональные данные</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Интеллектуальная собственность</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Изменение соглашения</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Заключительные положения</a></li>
+            </ul>
+        </div>
+        <div class="w-[304px] bg-[#F7F7F7] px-[16px]">
+            <div class="w-[2px] h-[29px] bg-[#EA615D] cursor-pointer absolute top-[85.5%] left-0"></div>
+            <a href="#" class="text-[14px] text-[#1f2026] font-bold hover:text-[#EA615D]">Foydalanish shartnomasi</a>
+            <ul class="w-[304px] px-[16px] mt-[10px] text-[14px] leading-[24px]">
+                <li class="hover:text-[#EA615D]"><a href="#">Atamalar va taʼriflar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">1. Shartnoma predmeti</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">2. Roʻyxatdan va avtorizatsiyadan oʻtish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">3. Xaridni amalga oshirish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">5. Tomonlarning huquq va majburiyatlari</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">6. Xaridorlarning fikr-mulohazalarini nashr qilish
+                        shartlari.</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">7. Shartnomani buzish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">8. E-mail joʻnatmalar siyosati</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">9. Javobgarlikni cheklash</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#"></a>10. Xaridorning shikoyatlari.</li>
+                <li class="hover:text-[#EA615D]"><a href="#">11. Shaxsiy maʼlumotlar</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">12. Intellektual mulk</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">13. Shartnomaga oʻzgartirish kiritish</a></li>
+                <li class="hover:text-[#EA615D]"><a href="#">14. Yakuniy qoidalar</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+    <!-- sidebar end -->
+    <!-- main -->
+    <div class="w-[900px] h-full ml-[370px] mt-[70px] py-[32px] px-[40px] ">
+        <div class="flex">
+            <p class="text-[#EA615D] text-[35px] cursor-pointer hover:underline absolute top-[102px] left-[370px] hidden"
+                id="fence">#</p>
+            <h1 class="text-[35px] font-semibold" id="text-hover">Uzum Market maxfiylik siyosati</h1>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[195px] left-[370px] hidden"
+                id="fence2">#</p>
+            <p class="mt-[40px] text-[26px] font-semibold" id="text-hover2">1. Kirish qismi</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">1.1. Mazkur maxfiylik siyosati «Uzum Market» MChJ XK
+                tomonidan Uzum bozori marketpleysi Xaridorlari va Sotuvchilari tomonidan olinadigan maxfiy
+                ma’lumotlarning xavfsizligi va saqlanishini ta’minlash, shuningdek quyidagi “Ishlov berish maqsadlari”
+                bo’limida batafsil tavsiflangan boshqa maqsadlarda ishlab chiqilgan va tasdiqlangan (keyingi o’rinlarda
+                <span class="font-semibold">«Maxfiylik siyosati»</span> deb yuritiladi).
+            </p>
+            <p>1.2. Ushbu Maxfiylik siyosati Foydalanuvchi shartnomasi va Sotuvchilar bilan tuzilgan shartnomaning
+                ajralmas qismi hisoblanadi. Ushbu hujjatlardan birini qabul qilish (ofertani qabul qilish) yoki imzolash
+                orqali tegishli Xaridor va/yoki Sotuvchi Maxfiylik siyosati shartlariga muvofiq quyida Maxfiy ma’lumot
+                sifatida tavsiflangan barcha ma’lumotlarga ishlov berishga so’zsiz roziligini bildiradi.</p>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[533px] left-[370px] hidden"
+                id="fence3">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover3">2. Asosiy tushunchalar</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">2.1 <span class="font-semibold">Maxfiy ma’lumotlarga
+                    avtomatlashtirilgan tarzda ishlov berish – </span>maxfiy ma’lumotlarga hisoblash texnikasi
+                vositalari yordamida ishlov berish.</p>
+            <p>2.2. <span class="font-semibold">Maxfiy ma’lumotlarni blokirovka qilish</span> – maxfiy ma’lumotlarga
+                ishlov berishni vaqtincha to’xtatish (ishlov berish Maxfiy ma’lumotlarni aniqlashtirish uchun zarur
+                bo’lgan holatlar bundan mustasno).</p>
+            <p class="mt-[15px]">2.3. <span class="font-semibold">Uzum kompaniyalar guruhi</span> – raqamli IT ekotizimi
+                tarkibiga kiruvchi kompaniyalar, shu jumladan, lekin ular bilan cheklanmagan holda “UZUM MARKET” MChJ
+                XK, “Kapitalbank” ATB, “UZUM BANK” AJ, “SOLUTIONS LAB” AJ, “UZUM” MChJ, “UZUM TECHNOLOGIES” MChJ XK,
+                “UZUM AVTO” MCHJ va ularning affillangan shaxslari.</p>
+            <p class="mt-[15px]">2.4. <span class="font-semibold">Maxfiy ma’lumotlarning axborot tizimi -
+                </span>ma’lumotlar bazalarida mavjud bo’lgan Maxfiy ma’lumotlar va ularga ishlov berishni ta’minlovchi
+                axborot texnologiyalari va texnik vositalar to’plami..</p>
+            <p class="mt-[15px]">2.5. <span class="font-semibold">Yuridik shaxs to’g’risidagi ma’lumotlar</span> -
+                elektron, qog’oz va (yoki) boshqa moddiy tashuvchilarga yozilgan har qanday ma’lumotlar, shu jumladan,
+                lekin ular bilan cheklanmagan holda, yuridik shaxslarning nomlari, aloqa ma’lumotlari (pochta
+                manzillari, elektron manzillar, telefon raqamlari) va Uzum Market tomonidan Sotuvchilardan olinadigan
+                boshqa ma’lumotlar.</p>
+            <p class="mt-[15px]">2.6. <span class="font-semibold">Tijorat siri</span> - uchinchi shaxslarga noma’lum
+
+                bo’lganligi sababli ilmiy-texnikaviy, texnologik, ishlab chiqarish, moliya-iqtisodiy va boshqa sohalarda
+                tijorat qiymatiga ega bo’lgan ma’lumotlar.</p>
+            <p class="mt-[15px]">2.7. <span class="font-semibold">Maxfiy ma’lumotlar</span> - ro’yxatdan o’tish va Uzum
+                Market marketpleysidan foydalanish jarayonida Sotuvchilar va Xaridorlardan Uzum Market tomonidan
+                olinadigan ma’lumotlar, shu jumladan shaxsga doir ma’lumotlar.</p>
+            <p class="mt-[15px]">2.8. <span class="font-semibold">Sotuvchi </span> - Marketpleys orqali Xaridorga
+                masofaviy usuldan foydalangan holda tovarlarni sotish bilan shug’ullanuvchi va Marketpleysda ro’yxatdan
+                o’tgan yakka tartibdagi tadbirkor yoki yuridik shaxs.ma’lumotlar.</p>
+            <p class="mt-[15px]">2.9. <span class="font-semibold">Shaxsga doir ma’lumotlarni egasizlantirish</span> —
+                amalga oshirilishi natijasida qo’shimcha ma’lumotlardan foydalanmasdan shaxsga doir ma’lumotlarning
+                ma’lum bir Xaridor yoki boshqa shaxsga doir ma’lumotlar subyektiga qarashli ekanligini aniqlashni
+                imkonsiz qiluvchi harakatlar.</p>
+            <p class="mt-[15px]">2.10. <span class="font-semibold">Maxfiy ma’lumotlarga ishlov berish </span> -
+                avtomatlashtirish vositalaridan foydalangan yoki foydalanmagan holda Maxfiy ma’lumotlar bilan amalga
+                oshiriladigan har qanday harakat (operatsiya) yoki harakatlar (operatsiyalar) majmui, shu jumladan,
+                Maxfiy ma’lumotlarni yig’ish, yozish, tizimlashtirish, to’plash, saqlash, aniqlashtirish (yangilash,
+                o’zgartirish), chiqarish, foydalanish, uzatish (tarqatish, taqdim etish, kirish), egasizlantisih,
+                blokirovka qilish, o’chirish, yo’q qilish.</p>
+            <p class="mt-[15px]">2.11. <span class="font-semibold">Shaxsga doir ma’lumotlar</span> - elektron, qog’oz va
+                (yoki) boshqa moddiy tashuvchilarga yozilgan, muayyan jismoniy shaxsga tegishli yoki uning shaxsini
+                aniqlash imkonini beradigan har qanday ma’lumot.</p>
+            <p class="mt-[15px]">2.12. <span class="font-semibold">Uzum Market Foydalanuvchisi/Xaridor</span> -
+                Marketpleysda Sotuvchining internet-do’konida Tovarga buyurtma rasmiylashtirish yo’li bilan Sotuvchidan
+                masofadan turib Tovarlarga (ishlarga, xizmatlarga) buyurtma berish yoki ularni sotib olish niyatida
+                bo’lgan yoki buyurtma berayotgan, tovardan (ish natijasidan, xizmatdan) faqat iste’mol qilish maqsadida
+                (shaxsiy, oilaviy, maishiy va tijorat faoliyati bilan bog’liq bo’lmagan boshqa maishiy (kundalik)
+                ehtiyojlari (maqsadlari) uchun) foydalanadigan jismoniy shaxs.</p>
+            <p class="mt-[15px]">2.13. <span class="font-semibold">Maxfiy ma’lumotlarni taqdim etish</span> - shaxsga
+                doir ma’lumotlarni ma’lum bir shaxsga yoki ma’lum doiradagi shaxslar oshkor qilishga qaratilgan
+                harakatlar.</p>
+            <p class="mt-[15px]">2.14. <span class="font-semibold">Maxfiy ma’lumotlarni tarqatish</span> - Maxfiy
+                ma’lumotlarni noaniq doiradagi shaxslarga oshkor etishga (Maxfiy ma’lumotlarni uzatishga) yoki
+                cheklanmagan doiradagi shaxslarni Maxfiy ma’lumotlar bilan tanishtirishga qaratilgan harakatlar, shu
+                jumladan ommaviy axborot vositalarida Maxfiy ma’lumotlarni e’lon qilish, axborot va telekommunikatsiya
+                tarmoqlarida joylashtirish yoki boshqa har qanday yo’l bilan Maxfiy ma’lumotlardan foydalanish
+                imkoniyatini berish.</p>
+            <p class="mt-[15px]">2.15. <span class="font-semibold">Uzum Market marketpleysi</span> - Xaridorlarga
+                Sotuvchilardan tovarlarga buyurtma berish imkonini beruvchi EHM uchun dasturlar va ma’lumotlar bazalari
+                (jumladan, Uzum Market mobil ilovasi).</p>
+
+            <p class="mt-[15px]">2.16. <span class="font-semibold">Shaxsga doir ma’lumotlarni transchegaraviy
+                    uzatish</span> - shaxsga doir ma’lumotlarni xorijiy davlat hududiga xorijiy davlat organiga, xorijiy
+                jismoniy shaxsga yoki xorijiy yuridik shaxsga uzatish.</p>
+            <p class="mt-[15px]">2.17. <span class="font-semibold">Maxfiy ma’lumotlarni yo’q qilish </span> - shaxsga
+                doir ma’lumotlar axborot tizimida keyinchalik shaxsga doir ma’lumotlar mazmunini tiklash imkoniyati
+                bo’lmagan holda shaxsga doir ma’lumotlarni qaytarib bo’lmaydigan tarzda yo’q qiladigan va (yoki) moddiy
+                shaxsga doir ma’lumotlar tashuvchilarini yo’q qiladigan har qanday harakatlar</p>
+
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[2055px] left-[370px] hidden"
+                id="fence4">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover4">3. Tartibga solish predmeti</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">3.1. Ushbu Maxfiylik siyosati Uzum Market va/yoki uning
+                affillangan shaxslari, shu jumladan Uzum kompaniyalar guruhi Xaridorlar va Sotuvchilardan Uzum Market
+                marketpleysi bilan ishlash jarayonida, shuningdek Xaridorlar va Sotuvchilar tomonidan foydalanish
+                maqsadlarida va/yoki natijasida Xaridorlar va Sotuvchilar bilan tuzilgan har qanday kelishuv va
+                shartnomalarning Uzum Market tomonidan bajarilishi jarayonida olishi mumkin bo’lgan barcha Maxfiy
+                ma’lumotlarga nisbatan amal qiladi.</p>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[2321px] left-[370px] hidden"
+                id="fence5">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover5">4. Ma’lumotlarga kim ishlov beradi</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">4.1. Kompaniya tomonidan har bir Xaridor va sotuvchiga
+                nisbatan olingan Maxfiy ma’lumotlar O’zbekiston Respublikasi qonunchiligiga muvofiq tashkil etilgan va
+                O’zbekiston Respublikasi, Toshkent shahar, Yakkasaroy tumani, Kichik Beshyog’och koʻchasi, 132А-uy
+                manzili bo’yicha ro’yxatdan o’tgan Kompaniya - «Uzum Market» mas’uliyati cheklangan jamiyat shaklidagi
+                xorijiy korxona yoki uning affillangan shaxslari tomonidan yig’iladi, ishlov beriladi, saqlanadi va
+                foydalaniladi.</p>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[2588px] left-[370px] hidden"
+                id="fence6">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover6">5. Uzum Market tomonidan qanday
+                ma’lumotlarga ishlov beriladi</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">5.1. Uzum Market tomonidan Xaridorlar va Sotuvchilarga
+                nisbatan ishlov beriladigan Maxfiy ma’lumotlar Xaridor yoki Sotuvchining Uzum Market marketpleysi bilan
+                qanday ishlashiga va Xaridor yoki Sotuvchining Uzum Market marketpleysiga kirish uchun shaxsiy
+                kabinetdan foydalanishi yoki foydalanmasligiga qarab farq qilishi mumkin.</p>
+            <p>5.2. Uzum Market zarur holatlarda quyidagi toifadagi maʼlumotlarni toʻplaydi va ularga ishlov beradi:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>Shaxsga doir ma’lumotlar;</li>
+                <li>Yuridik shaxslar va ularning vakillari to’g’risidagi ma’lumotlar;</li>
+                <li>Tijorat siri;</li>
+                <li>Texnik ma’lumotlar;</li>
+                <li>Nou-xau;</li>
+                <li>Uchinchi shaxslarga oshkor qilinishi mumkin bo’lmagan boshqa ma’lumotlar.</li>
+            </ul>
+
+            <p>5.3. Uzum Market quyidagi ma’lumotlarni oladi:</p>
+            <p class="my-[16px]">5.3.1. Xaridorlardan olinadigan Maxfiy ma’lumotlar:</p>
+            <p>5.3.1.1. Uzum Market’da roʻyxatdan oʻtish uchun zarur boʻlgan maʼlumotlar:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>F.I.Sh.</li>
+                <li>Mobil telefon raqami;</li>
+                <li>Facebook’dagi profilingiz, «ВКонтакте» dagi profilingiz yoki Google akkauntingizning identifikatori
+                    (ID);</li>
+            </ul>
+            <p>5.3.1.2. Uzum Market’da tahrirlash boʻlimidan foydalanish uchun zarur boʻlgan maʼlumotlar:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>Ism;</li>
+                <li>Familiya;</li>
+                <li>Jins;</li>
+                <li>Tug’ilgan sana;</li>
+                <li>Tovarlarni yetkazib berish manzili;</li>
+                <li>Mobil telefon raqami.</li>
+            </ul>
+            <p>5.3.1.3. Uzum Market ilovasi bilan ishlashda avtomatik tarzda uzatiladigan maʼlumotlar:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>IP manzil va cookies fayllari;</li>
+                <li>Saytda bajarilgan harakat turi (klik, kursorni mo’ljalga olib borish va hokazo);</li>
+                <li>Amal bajarilgan sana va vaqt;</li>
+                <li>Sahifaning URL manzili;</li>
+                <li>Sahifaga tashriflar soni;</li>
+                <li>Sayt sahifalari bo’ylab harakatlanish haqida ma’lumot;</li>
+                <li>Foydalanuvchi sessiyasining davomiyligi;</li>
+                <li>Kirish nuqtalari (foydalanuvchi Saytga havola orqali o’tadigan begona saytlar);</li>
+                <li>Chiqish nuqtalari (Saytdan foydalanuvchi begona saytlarga o’tadigan havolalar);</li>
+                <li>Mamlakat;</li>
+                <li>Sayt sahifalari bo’ylab harakatlanish haqida ma’lumot;</li>
+                <li>Hudud;</li>
+                <li>Provayder;</li>
+                <li>Foydalanuvchi brauzeri;</li>
+                <li>Qurilmada qo’llab-quvvatlanadigan tillar ro’yxati;</li>
+                <li>Operatsion tizim turi;</li>
+                <li>Ekran parametrlari.</li>
+            </ul>
+            <p>5.3.2. Sotuvchilardan olinadigan maxfiy ma’lumotlar:</p>
+            <p class="my-[16px]">5.3.2.1. Sotuvchilardan olinadigan ma’lumotlar:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>Yuridik shaxsning nomi;</li>
+                <li>STIR;</li>
+                <li>OKED;</li>
+                <li>JShShIR;</li>
+                <li>Bank rekvizitlari;</li>
+                <li>Yuridik va pochta manzillari;</li>
+                <li>Aloqa ma’lumotlari;</li>
+                <li>Sotuvchilar vakilining F.I.Sh. va aloqa ma’lumotlari;</li>
+                <li>Do’konlardan (Mijozlardan) olinadigan Foydalanuvchi ularning tovarlari va (yoki) xizmatlarini xarid
+                    qilganligi haqidagi ma’lumotlar.</li>
+            </ul>
+            <p>5.3.2.2. Uzum Market ilovasi bilan ishlashda avtomatik ravishda uzatiladigan ma’lumotlar:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>Buyurtma statuslari;</li>
+                <li>Buyurtma tarkibi.</li>
+            </ul>
+            <p>5.4. Siyosatning belgilangan qoidalari Maxfiy ma’lumotlarni transchegaraviy uzatishni ham o’z ichiga
+                oladi. Maxfiy ma’lumotlarni transchegaraviy uzatish shaxsga doir ma’lumotlar subyektlarining huquqlarini
+                yetarli darajada himoya qilishni ta’minlaydigan xorijiy davlatlar hududiga amalga oshiriladi.</p>
+            <p class="my-[16px]">5.5. Uzum Market shuningdek, maxfiy ma’lumotlarga egasizlantirilgan tarzda ishlov
+                berishni amalga oshiradi.</p>
+            <p>5.6. Uzum Market taqdim etilgan Maxfiy ma’lumotlarni tekshirmaydi, Foydalanuvchi shartnomasida, Sotuvchi
+                bilan tuzilgan shartnomada nazarda tutilgan hollar bundan mustasno, va uning haqiqiyligini, shuningdek,
+
+                Xaridorning Maxfiy ma’lumotlarni taqdim etish uchun yetarli huquqiy layoqatga ega yoki ega emasligini,
+                Sotuvchilar vakillarining shaxsga doir ma’lumotlarni uzatish uchun tegishli roziliklar olingan yoki
+                olinmaganligini baholay olmaydi. Uzum Market Xaridor ishonchli va yetarli Maxfiy ma’lumotlarni taqdim
+                etishiga, shuningdek, ularni o’z vaqtida yangilashi hamda Sotuvchilar o’z vakillarining shaxsga doir
+                ma’lumotlarini uzatish uchun barcha zarur roziliklarni olganligiga asoslanadi.</p>
+            <p class="my-[16px]">5.7. Uzum Market Maxfiy ma’lumotlarga ishlov berish jarayonida ularing himoya
+                qilinishini ta’minlashga intiladi. Uzum Market ushbu veb-saytga muntazam tashrif buyurishingizni tavsiya
+                qiladi, chunki ushbu Maxfiylik siyosati amaldagi qonunchilikka kiritilgan o’zgartirishlar yoki bizning
+                ichki jarayonlarimizdagi o’zgarishlarga muvofiq yangilanishi mumkin.</p>
+            <p>5.8. Shaxsga doir ma’lumotlarning xavfsizligi deganda shaxsga doir ma’lumotlardan noqonuniy ravishda
+                va/yoki ruxsatsiz foydalanishdan, shaxsga doir ma’lumotlarni yo’q qilishdan, o’zgartirishdan, blokirovka
+                qilishdan, nusxalashdan, taqdim etishdan, tarqatishdan, shuningdek shaxsga doir ma’lumotlarga nisbatan
+                boshqa noqonuniy harakatlardan himoyalangan muhitni ta’minlash nazarda tutiladi.</p>
+            <p class="mt-[16px]">5.9. Xaridor va Sotuvchi o’z ixtiyori bilan Maxfiy ma’lumotlarni taqdim etadi. Bunda,
+                har qanday Maxfiy ma’lumotni taqdim etmaslik yoki Maxfiy ma’lumotlarga ishlov berishga rozilikni
+                qaytarib olish Uzum Market Marketpleysidan foydalana olmaslikka olib kelishi mumkin.</p>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[4928px] left-[370px] hidden"
+                id="fence7">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover7">6. Ishlov berishdan maqsad</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">6.1. Maxfiy ma’lumotlarga ishlov berish:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>Xaridorlar, sotuvchilar va Uzum Market o’rtasidagi shartnomalar, shu jumladan Foydalanuvchi
+                    shartnomasi, Sotuvchilar bilan tuzilgan shartnomalar shartlarini bajarish;</li>
+                <li>Uzum Market Marketpleysi faoliyatini ta’minlash va takomillashtirish;</li>
+                <li>Uzum Market bozori va Uzum kompaniyalar guruhining huquq va qonuniy manfaatlarini ta’minlash, agar
+                    bunday ishlov berish Uzum Market Marketpleysi Xaridorlari va Sotuvchilari huquqlari va qonuniy
+                    manfaatlariga jiddiy ta’sir ko’rsatmasa;</li>
+                <li>O’zbekiston Respublikasi qonunchiligida belgilangan me’yorlarga rioya qilish uchun zarur.</li>
+            </ul>
+            <p>6.2. Uzum Market Maxfiy ma’lumotlarga quyidagi maqsadlarda ishlov beradi:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>Uzum Market Marketpleysidan foydalanish imkoniyatini berish;</li>
+                <li>Xaridor va Sotuvchining shaxsiy kabinetiga kirishni ta’minlash;</li>
+                <li>Uzum Market Marketpleysida Tovarlarni xarid qilish uchun buyurtmalarga ishlov berish va
+                    rasmiylashtirish;</li>
+                <li>Uzum Market Marketpleysidan foydalangan holda to’lovlarni qabul qilishni, tovarlar uchun to’lovlarni
+                    amalga oshirishni tashkil etish;</li>
+                <li>Xaridorlar va Sotuvchilar bilan muloqot qilish, Uzum Market faoliyatiga oid xabarnomalar, so’rovlar
+                    va boshqa ma’lumotlarni yuborish;</li>
+                <li>Xaridorlar va Sotuvchilarni firibgarlik harakatlaridan himoya qilish;</li>
+                <li>Xaridorlar va Sotuvchilarning xohish-istaklarini inobatga olgan holda reklama-axborot materiallarini
+
+                    tarqatish hamda Uzum Market va Uzum guruhining birgalikdagi marketing aksiyalarini o’tkazish;</li>
+                <li>Uzum Market Marketpleysini doimiy ravishda takomillashtirish va yaxshilash;</li>
+                <li>Uzum Market Marketpleysi foydalanuvchilarining xatti-harakatlarini o’rganish;</li>
+                <li>Uzum Market va Uzum kompaniyalar guruhining yangi mahsulotlari, utilitlari va takliflarini yaratish;
+                </li>
+                <li>Xaridor va Sotuvchining huquqlarini himoya qilish;</li>
+                <li>statistik ma’lumotlarni, katta ma’lumotlarni va boshqa tadqiqotlar haqida ma’lumotlarni yig’ish,
+                    ularga ishlov berish va taqdim etish.
+                </li>
+            </ul>
+            <p class="mb-[16px]">6.3. Qo’shimcha maqsadlar yuzaga kelganda yoki amaldagi qonunchilik talablariga
+                muvofiq,
+                Uzum Market Maxfiy ma’lumotlarga ishlov berishga alohida rozilik so’rashi mumkin.</p>
+            <p>6.4. Ushbu Siyosat ushbu Siyosat kuchga kirishidan oldin ham, keyin ham olingan Maxfiy ma’lumotlarga
+                nisbatan
+                qo’llaniladi.
+
+            </p>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[5850px] left-[370px] hidden"
+                id="fence8">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover8">7. Maxfiy ma’lumotlarni to’plash, saqlash,
+                uzatish va ularga boshqa tarzda ishlov berish tartibi</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">7.1. Uzum Market tomonidan ishlov beriladigan Maxfiy
+                ma’lumotlarning xavfsizligi shaxsga doir ma’lumotlarni himoya qilish sohasidagi amaldagi qonun
+                hujjatlari talablariga to’liq rioya qilish uchun zarur bo’lgan huquqiy, tashkiliy va texnik
+                chora-tadbirlarni amalga oshirish orqali ta’minlanadi.</p>
+            <p>7.2. Uzum Market Maxfiy ma’lumotlar xavfsizligini ta’minlaydi va vakolatsiz shaxslar tomonidan Maxfiy
+                ma’lumotlarning foydalanilishini istisno qiluvchi barcha choralarni ko’radi. Maxfiy ma’lumotlar Uzum
+                Market xodimlari tomonidan zaruratga ko’ra ushbu Siyosatning 4-bo’limida ko’rsatilgan maqsadlarda
+                foydalaniladi.</p>
+            <p class="my-[16px]">7.3. Uzum Market Maxfiy ma’lumotlarni o’zining affillangan shaxslariga, shu jumladan
+                Uzum guruhiga kiruvchi kompaniyalarga faqat ushbu Siyosatning 4-bo’limida ko’rsatilgan maqsadlar uchun
+                taqdim etishi ham mumkin.</p>
+            <p>7.4. Xaridor va Sotuvchining Maxfiy ma’lumotlari hech qachon, hech qanday sharoitda uchinchi shaxslarga
+                berilmaydi, amaldagi qonunchilikni amalga oshirish bilan bog’liq hollar va/yoki Maxfiy ma’lumotlarga
+                Uzum Market manfaatlarini ko’zlagan holda ishlov berish maqsadlari uchun bo’lgan hollar bundan mustasno.
+            </p>
+            <p class="my-[16px]">7.5. Foydalanuvchi shartnomasi, Sotuvchilar bilan tuzilgan shartnoma bo’yicha muayyan
+                xizmatlarni ko’rsatish uchun Uzum Market uchinchi shaxslarni jalb qilishi mumkin. Agar bunday shaxslarga
+                Maxfiy ma’lumotlardan foydalanish zarur bo’lsa, Uzum Market bunday foydalanish tegishli xizmatlarni
+                taqdim etish uchun zarur bo’lgan darajada cheklanishini ta’minlaydi. Bundan tashqari, bunday tashqi
+                xizmat ko’rsatuvchilar barcha amaldagi ma’lumotlarni himoya qilish qoidalariga mustaqil ravishda rioya
+                qilishlari kerak. Bunday qabul qiluvchilar toifalariga quyidagi xizmatlar turlarini ko’rsatuvchilar
+                kiradi: veb-tahlil, ma’lumotlarga ishlov berish, reklama, elektron pochta orqali ma’lumot tarqatish,
+                to’lovlarga ishlov berish, buyurtmalarni bajarish va hokazo.</p>
+            <p>7.6. Uzum Market tomonidan Maxfiy ma’lumotlarni saqlash muddati uni to’plash va unga ishlov berishdan
+                yoki O’zbekiston Respublikasi qonun hujjatlari talablariga rioya qilishdan bo’lgan maqsadga erishish
+                sanasi bilan belgilanadi.</p>
+            <p class="my-[16px]">7.7. Xaridorlar va Sotuvchilardan olingan barcha Maxfiy maʼlumotlar Oʻzbekiston
+                Respublikasi hududida saqlanadi.</p>
+
+            <p>7.8. Maxfiy ma’lumotlarga ishlov berish ham avtomatlashtirilgan vositalardan foydalangan holda, ham
+                avtomatlashtirish vositalaridan foydalanmasdan amalga oshiriladi.</p>
+            <p class="my-[16px]">7.9. Uzum Market Marketpleysda tovarlar savdosini amalga oshiruvchi Sotuvchiga Sotuvchi
+                tomonidan Xaridor oldidagi o‘z majburiyatlarini bajarish uchun zarur bo‘lgan hajmda Xaridorning shaxsiy
+                va boshqa ma’lumotlarini taqdim etishga haqli. Bunga buyurtmalarni qayta ishlash va bajarish, yetkazib
+                berishni tashkil etish, kafolatli xizmat ko‘rsatish, shuningdek, Xaridor va Sotuvchi o‘rtasidagi
+                kelishuvlarda nazarda tutilgan boshqa holatlar kiradi, lekin ular bilan cheklanmaydi.</p>
+            <p>7.10. Uzum market platformada ro‘yxatdan o‘tgan Sotuvchilar va Xaridorlar haqidagi ma’lumotlarni davlat
+                organlariga, jumladan, huquqni muhofaza qiluvchi va nazorat qiluvchi organlarga yuborish huquqiga ega.
+            </p>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[6909px] left-[370px] hidden"
+                id="fence9">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover9">8. Shaxsga doir ma’lumotlarni
+                transchegaraviy uzatish</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">8.1. Uzum Market ushbu Siyosat shartlariga muvofiq va
+                O’zbekiston Respublikasi qonunchiligi talablariga rioya qilgan holda shaxsga doir ma’lumotlarni
+                transchegaraviy uzatishni amalga oshirishga haqli.</p>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[7104px] left-[370px] hidden"
+                id="fence10">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover10">9. Maxfiy ma’lumotlar egasining huquqlari
+            </p>
+        </div>
+        <div>
+            <p class="pt-[16px] border-t-[1px] border-[#F0F1F3]">9.1. Foydalanuvchilarning huquqlari:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>Uzum Market Marketpleysidagi Shaxsiy kabinetda o’zi haqidagi ma’lumotlarga mustaqil ravishda
+                    o’zgartirishlar, qo’shimchalar kiritish;</li>
+                <li>Uzum Market Marketpleysidagi Shaxsiy kabinetda ko’rsatilgan o’zi haqidagi Maxfiy ma’lumotlarni
+                    o’chirib tashlash. Shaxsiy kabinet va/yoki Maxfiy ma’lumotlarni o’chirish Uzum Market
+                    Marketpleysidan foydalana olmaslikka olib kelishi mumkin;</li>
+                <li>so’rov bo’yicha Uzum Market’dan o’zining shaxsga doir ma’lumotlariga ishlov berishga oid
+                    ma’lumotlarni olish;</li>
+                <li>Uzum Market’da o’zining Maxfiy ma’lumotlari mavjudligi va uning hajmi to’g’risida xabardor bo’lish;
+                </li>
+                <li>Uzum Market’dan o’zining Maxfiy ma’lumotlaridan foydalana olish imkoniyatini berish shartlari
+                    to’g’risida ma’lumot olish;</li>
+                <li>o’zining Maxfiy ma’lumotlariga ishlov berishga roziligini qaytarib olish, amaldagi qonunchilikda
+                    nazarda tutilgan hollar bundan mustasno;</li>
+                <li>shaxsiy maʼlumotlar toʻliq boʻlmagan, eskirgan, notoʻgʻri, noqonuniy ravishda olingan yoki ishlov
+                    berish maqsadlari uchun zarur boʻlmagan hollarda Uzum Market’dan o’zining shaxsga doir
+                    maʼlumotlariga ishlov berishni vaqtincha toʻxtatishni talab qilish;</li>
+                <li>o’zining shaxsga doir ma’lumotlariga nisbatan huquqlari va qonuniy manfaatlarini himoya qilish
+                    masalalari yuzasidan vakolatli davlat organiga yoki sudga murojaat etish.</li>
+            </ul>
+            <p>9.2. Sotuvchilarning huquqlari:</p>
+            <ul class="list-disc ml-[16px] my-[16px]">
+                <li>Uzum Market Marketpleysidagi Shaxsiy kabinetda o’zi va o’zining vakillari haqidagi Maxfiy
+                    ma’lumotlarga mustaqil ravishda o’zgartirishlar, qo’shimchalar kiritish;</li>
+
+                <li>Uzum Market Marketpleysidagi Shaxsiy kabinetda ko’rsatilgan Maxfiy ma’lumotlarni o’chirib tashlash.
+                    Shaxsiy kabinet va/yoki Maxfiy ma’lumotlarni o’chirish Uzum Market Marketpleysidan foydalana
+                    olmaslikka olib kelishi mumkin;</li>
+                <li>Uzum Market’da o’zining Maxfiy ma’lumotlari mavjudligi va uning hajmi to’g’risida xabardor bo’lish;
+                </li>
+                <li>Uzum Market’dan o’zining Maxfiy ma’lumotlaridan foydalana olish imkoniyatini berish shartlari
+                    to’g’risida ma’lumot olish;</li>
+                <li>shaxsiy maʼlumotlar toʻliq boʻlmagan, eskirgan, notoʻgʻri, noqonuniy ravishda olingan yoki ishlov
+                    berish maqsadlari uchun zarur boʻlmagan hollarda Uzum Market’dan Maxfiy ma’lumotlarga ishlov
+                    berishni vaqtincha toʻxtatishni talab qilish.</li>
+            </ul>
+        </div>
+        <div class="flex">
+            <p class="text-[#EA615D] text-[26px] cursor-pointer hover:underline absolute top-[7993px] left-[370px] hidden"
+                id="fence11">#</p>
+            <p class="mt-[75px] text-[26px] font-semibold" id="text-hover11">10. Yakuniy qoidalar</p>
+        </div>
+        <div>
+            <p class="py-[16px] border-t-[1px] border-[#F0F1F3]">10.1. Ushbu Siyosat, Xaridor va Sotuvchi o’rtasidagi
+                ushbu Siyosatni qo’llash bilan bog’liq holda yuzaga keladigan munosabatlar, shuningdek, ushbu Siyosat
+                bilan tartibga solinmagan masalalar O’zbekiston Respublikasining amaldagi qonunchiligi bilan tartibga
+                solinadi.</p>
+            <p>10.2. Foydalanuvchi oʻzining Maxfiy maʼlumotlariga ishlov berish bilan bogʻliq barcha savollar boʻyicha
+                har qanday tushuntirishlarni Uzum Market Call Center-ga murojaat qilib olishi mumkin.</p>
+            <p class="my-[16px]">10.3. Maxfiy ma’lumotlardan noqonuniy foydalanish fakti aniqlangan taqdirda,
+                ma’lumotlaridan noqonuniy foydalanilgan Maxfiy ma’lumotlar subyekti Uzum Marketga bunday Maxfiy
+                ma’lumotlarni o’chirish to’g’risida yozma ariza yuboradi. Arizada Maxfiy ma’lumotlar subyektining
+                shaxsini tasdiqlovchi hujjatning rekvizitlari, noqonuniy foydalanilgan Maxfiy ma’lumotlarning tarkibi,
+                Maxfiy ma’lumotlardan qayerda va qanday hollarda noqonuniy foydalanilganligi tavsifi ko’rsatilishi
+                kerak.</p>
+            <p>10.4. Ro'yxatdan o'tishda har bir xaridor/foydalanuvchi Uzum Market xizmatidan, saytdan foydalanishda
+                foydalanuvchi tomonidan yaratilgan kontent siyosatiga rozi bo'ladi
+                (https://legal.uzum.uz/content-uz.html) www.uzum.uz va uzum Market mobil ilovasi.</p>
+            <p class="my-[16px]">10.5. Uzum Market ushbu Siyosatga Xaridorlar va Sotuvchilarning roziligisiz
+                o’zgartirishlar kiritish huquqiga ega.</p>
+            <p>10.6. Ushbu hujjatda Uzum Market tomonidan Siyosatga kiritiladigan har qanday o’zgarishlar aks
+                ettiriladi. Siyosat uning yangi tahriri bilan almashtirilgunga qadar muddatsiz amal qiladi.</p>
+            <p class="mt-[16px]">10.7. Siyosatning ochiq foydalanishdagi amaldagi tahriri Internetda
+                (https://legal.uzum.uz/privacy-policy-uz.html) manzilida joylashtirilgan.</p>
+        </div>
+        <div class="w-full h-[64px] mt-[65px] flex items-center justify-between">
+            <span class="text-[#EA615D] cursor-pointer font-semibold"><i class="bi bi-arrow-left text-black"></i>
+                Политика конфиденциальности Uzum Market</span>
+            <span class="text-[#EA615D] cursor-pointer font-semibold">Пользовательское соглашение <i
+                    class="bi bi-arrow-right text-black"></i></span>
+        </div>
+    </div>
+    <!-- main end -->
+
+
+    <script>
+        // text hover
+        const textHover = document.getElementById('text-hover');
+        const fence = document.getElementById('fence');
+        const textHover2 = document.getElementById('text-hover2');
+        const fence2 = document.getElementById('fence2');
+        const textHover3 = document.getElementById('text-hover3');
+        const fence3 = document.getElementById('fence3');
+        const textHover4 = document.getElementById('text-hover4');
+        const fence4 = document.getElementById('fence4');
+        const textHover5 = document.getElementById('text-hover5');
+        const fence5 = document.getElementById('fence5');
+        const textHover6 = document.getElementById('text-hover6');
+        const fence6 = document.getElementById('fence6');
+        const textHover7 = document.getElementById('text-hover7');
+        const fence7 = document.getElementById('fence7');
+        const textHover8 = document.getElementById('text-hover8');
+        const fence8 = document.getElementById('fence8');
+        const textHover9 = document.getElementById('text-hover9');
+        const fence9 = document.getElementById('fence9');
+        const textHover10 = document.getElementById('text-hover10');
+        const fence10 = document.getElementById('fence10');
+        const textHover11 = document.getElementById('text-hover11');
+        const fence11 = document.getElementById('fence11');
+
+        textHover.addEventListener('mouseenter', () => {
+            fence.classList.remove('hidden');
+        });
+        textHover.addEventListener('mouseleave', () => {
+            fence.classList.add('hidden');
+        });
+        textHover2.addEventListener('mouseenter', () => {
+            fence2.classList.remove('hidden');
+        });
+        textHover2.addEventListener('mouseleave', () => {
+            fence2.classList.add('hidden');
+        });
+        textHover3.addEventListener('mouseenter', () => {
+            fence3.classList.remove('hidden');
+        });
+        textHover3.addEventListener('mouseleave', () => {
+            fence3.classList.add('hidden');
+        });
+        textHover4.addEventListener('mouseenter', () => {
+            fence4.classList.remove('hidden');
+        });
+        textHover4.addEventListener('mouseleave', () => {
+            fence4.classList.add('hidden');
+        });
+        textHover5.addEventListener('mouseenter', () => {
+            fence5.classList.remove('hidden');
+        });
+        textHover5.addEventListener('mouseleave', () => {
+            fence5.classList.add('hidden');
+        });
+        textHover6.addEventListener('mouseenter', () => {
+            fence6.classList.remove('hidden');
+        });
+        textHover6.addEventListener('mouseleave', () => {
+            fence6.classList.add('hidden');
+        });
+        textHover7.addEventListener('mouseenter', () => {
+            fence7.classList.remove('hidden');
+        });
+        textHover7.addEventListener('mouseleave', () => {
+            fence7.classList.add('hidden');
+        });
+        textHover8.addEventListener('mouseenter', () => {
+            fence8.classList.remove('hidden');
+        });
+        textHover8.addEventListener('mouseleave', () => {
+            fence8.classList.add('hidden');
+        });
+        textHover9.addEventListener('mouseenter', () => {
+            fence9.classList.remove('hidden');
+        });
+        textHover9.addEventListener('mouseleave', () => {
+            fence9.classList.add('hidden');
+        });
+        textHover10.addEventListener('mouseenter', () => {
+            fence10.classList.remove('hidden');
+        });
+        textHover10.addEventListener('mouseleave', () => {
+            fence10.classList.add('hidden');
+        });
+        textHover11.addEventListener('mouseenter', () => {
+            fence11.classList.remove('hidden');
+        });
+        textHover11.addEventListener('mouseleave', () => {
+            fence11.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>

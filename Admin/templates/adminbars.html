@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+    </style>
+
+<body class=" flex ">
+
+    <header class="w-full bg-white  h-[78px] shadow-sm border-b border-gray-200 px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <h2 class="text-2xl font-bold text-gray-900">Admin boshqaruvi</h2>
+                <div class="relative">
+                    <input type="text" placeholder="Buyurtmalarni qidirish..."
+                        class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-80 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <div
+                        class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+                        <i class="ri-search-line text-gray-400 text-sm"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-notification-line"></i>
+                    </div>
+                    <span
+                        class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">7</span>
+                </button>
+                <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-settings-line"></i>
+                    </div>
+                </button>
+                <div class="flex items-center space-x-3">
+                    <img src="https://readdy.ai/api/search-image?query=professional%20business%20person%20avatar%20portrait%20with%20clean%20background%20modern%20corporate%20headshot&width=40&height=40&seq=admin-avatar&orientation=squarish"
+                        alt="Admin" class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <p class="font-medium text-gray-900">{{ request.user.username }}</p>
+                        <p class="text-sm text-gray-500">Administrator</p>
+                    </div>
+                </div>
+                <a href="{% url 'logout' %}">
+                    <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-logout-box-line"></i>
+                        </div>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>
